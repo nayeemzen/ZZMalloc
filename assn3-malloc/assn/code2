@@ -1,0 +1,18 @@
+            sl_remove(bp);
+            PUT(HDRP(bp), PACK(asize, 0));
+            PUT(FTRP(bp), PACK(asize, 0));
+            PUT(HDRP(NEXT_BLKP(bp)), PACK(remaining_bsize, 0));
+            PUT(FTRP(NEXT_BLKP(bp)), PACK(remaining_bsize, 0));
+            sl_insert(bp);
+            sl_insert(NEXT_BLKP(bp));
+            return bp;
+        } else {
+            // Move it beside to next (the bigger adj blk)
+            sl_remove(bp);
+            PUT(HDRP(bp), PACK(remaining_bsize, 0));
+            PUT(FTRP(bp), PACK(remaining_bsize, 0));
+            PUT(HDRP(NEXT_BLKP(bp)), PACK(asize, 0));
+            PUT(FTRP(NEXT_BLKP(bp)), PACK(asize, 0));
+            sl_insert(bp);
+            sl_insert(NEXT_BLKP(bp));
+            return NEXT_BLKP(bp);

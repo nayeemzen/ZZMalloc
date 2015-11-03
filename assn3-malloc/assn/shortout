@@ -1,0 +1,4336 @@
+Team Name:0xdefec8ed
+Member 1 :Nayeem Husain Zen:nayeem.zen@mail.utoronto.ca
+Member 2 :Zaid Al Khishman:zaid.al.khishman@mail.utoronto.ca
+Entering mm_init
+Entering sl_init
+Entering mm_malloc to allocate 2040 bytes
+Adjusted asize is 2064
+Entering sl_find_fit for 2064
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 2064
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b1030
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 2040 bytes
+Adjusted asize is 2064
+Entering sl_find_fit for 2064
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 2064
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b1840
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b1840
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 48 bytes
+Adjusted asize is 64
+Entering sl_find_fit for 64
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b1840
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+Entering sl_remove
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2000:free] footer tag: [2000:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_insert_in_size_order
+0x7fbb587b2010: header tag: [64:free] footer tag: [64:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_remove
+0x7fbb587b2010: header tag: [64:free] footer tag: [64:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 4096
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b2050
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b2050
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b2050
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_free to free ptr 0x7fbb587b1030
+Entering coalesce
+About to remove 0x7fbb587b1840 from freelist
+Entering sl_remove
+0x7fbb587b1840: header tag: [2000:free] footer tag: [2000:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [4064:free] footer tag: [4064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b2010
+Entering coalesce
+About to remove 0x7fbb587b1030 from freelist
+Entering sl_remove
+0x7fbb587b1030: header tag: [4064:free] footer tag: [4064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b1030
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+Entering sl_remove
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [32:free] footer tag: [32:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_insert_in_size_order
+0x7fbb587b1050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_remove
+0x7fbb587b1050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_free to free ptr 0x7fbb587b2050
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b1050
+Entering coalesce
+About to remove 0x7fbb587b1030 and 0x7fbb587b2050 from freelist
+Entering sl_remove
+0x7fbb587b1030: header tag: [32:free] footer tag: [32:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [8224:free] footer tag: [8224:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_init
+Entering sl_init
+Entering mm_malloc to allocate 2040 bytes
+Adjusted asize is 2064
+Entering sl_find_fit for 2064
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 2064
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b1030
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 2040 bytes
+Adjusted asize is 2064
+Entering sl_find_fit for 2064
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 2064
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b1840
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b1840
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 48 bytes
+Adjusted asize is 64
+Entering sl_find_fit for 64
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b1840
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+Entering sl_remove
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2000:free] footer tag: [2000:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_insert_in_size_order
+0x7fbb587b2010: header tag: [64:free] footer tag: [64:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_remove
+0x7fbb587b2010: header tag: [64:free] footer tag: [64:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 4096
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b2050
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b2050
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b2050
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_free to free ptr 0x7fbb587b1030
+Entering coalesce
+About to remove 0x7fbb587b1840 from freelist
+Entering sl_remove
+0x7fbb587b1840: header tag: [2000:free] footer tag: [2000:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [4064:free] footer tag: [4064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b2010
+Entering coalesce
+About to remove 0x7fbb587b1030 from freelist
+Entering sl_remove
+0x7fbb587b1030: header tag: [4064:free] footer tag: [4064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b1030
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+Entering sl_remove
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [32:free] footer tag: [32:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_insert_in_size_order
+0x7fbb587b1050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_remove
+0x7fbb587b1050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_free to free ptr 0x7fbb587b2050
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b1050
+Entering coalesce
+About to remove 0x7fbb587b1030 and 0x7fbb587b2050 from freelist
+Entering sl_remove
+0x7fbb587b1030: header tag: [32:free] footer tag: [32:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [8224:free] footer tag: [8224:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_init
+Entering sl_init
+Entering mm_malloc to allocate 2040 bytes
+Adjusted asize is 2064
+Entering sl_find_fit for 2064
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 2064
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b1030
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 2040 bytes
+Adjusted asize is 2064
+Entering sl_find_fit for 2064
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 2064
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b1840
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b1840
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 48 bytes
+Adjusted asize is 64
+Entering sl_find_fit for 64
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b1840
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+Entering sl_remove
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2000:free] footer tag: [2000:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_insert_in_size_order
+0x7fbb587b2010: header tag: [64:free] footer tag: [64:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_remove
+0x7fbb587b2010: header tag: [64:free] footer tag: [64:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 4096
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b2050
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b2050
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b2050
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_free to free ptr 0x7fbb587b1030
+Entering coalesce
+About to remove 0x7fbb587b1840 from freelist
+Entering sl_remove
+0x7fbb587b1840: header tag: [2000:free] footer tag: [2000:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [4064:free] footer tag: [4064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b2010
+Entering coalesce
+About to remove 0x7fbb587b1030 from freelist
+Entering sl_remove
+0x7fbb587b1030: header tag: [4064:free] footer tag: [4064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b1030
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+Entering sl_remove
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [32:free] footer tag: [32:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_insert_in_size_order
+0x7fbb587b1050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_remove
+0x7fbb587b1050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_free to free ptr 0x7fbb587b2050
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b1050
+Entering coalesce
+About to remove 0x7fbb587b1030 and 0x7fbb587b2050 from freelist
+Entering sl_remove
+0x7fbb587b1030: header tag: [32:free] footer tag: [32:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [8224:free] footer tag: [8224:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_init
+Entering sl_init
+Entering mm_malloc to allocate 2040 bytes
+Adjusted asize is 2064
+Entering sl_find_fit for 2064
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 2064
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b1030
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 2040 bytes
+Adjusted asize is 2064
+Entering sl_find_fit for 2064
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 2064
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b1840
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b1840
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 48 bytes
+Adjusted asize is 64
+Entering sl_find_fit for 64
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b1840
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+Entering sl_remove
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2000:free] footer tag: [2000:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_insert_in_size_order
+0x7fbb587b2010: header tag: [64:free] footer tag: [64:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_remove
+0x7fbb587b2010: header tag: [64:free] footer tag: [64:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 4096
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b2050
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b2050
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b2050
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_free to free ptr 0x7fbb587b1030
+Entering coalesce
+About to remove 0x7fbb587b1840 from freelist
+Entering sl_remove
+0x7fbb587b1840: header tag: [2000:free] footer tag: [2000:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [4064:free] footer tag: [4064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b2010
+Entering coalesce
+About to remove 0x7fbb587b1030 from freelist
+Entering sl_remove
+0x7fbb587b1030: header tag: [4064:free] footer tag: [4064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b1030
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+Entering sl_remove
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [32:free] footer tag: [32:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_insert_in_size_order
+0x7fbb587b1050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_remove
+0x7fbb587b1050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_free to free ptr 0x7fbb587b2050
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b1050
+Entering coalesce
+About to remove 0x7fbb587b1030 and 0x7fbb587b2050 from freelist
+Entering sl_remove
+0x7fbb587b1030: header tag: [32:free] footer tag: [32:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [8224:free] footer tag: [8224:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_init
+Entering sl_init
+Entering mm_malloc to allocate 2040 bytes
+Adjusted asize is 2064
+Entering sl_find_fit for 2064
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 2064
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b1030
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 2040 bytes
+Adjusted asize is 2064
+Entering sl_find_fit for 2064
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 2064
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b1840
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b1840
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 48 bytes
+Adjusted asize is 64
+Entering sl_find_fit for 64
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b1840
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+Entering sl_remove
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2000:free] footer tag: [2000:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_insert_in_size_order
+0x7fbb587b2010: header tag: [64:free] footer tag: [64:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_remove
+0x7fbb587b2010: header tag: [64:free] footer tag: [64:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 4096
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b2050
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b2050
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b2050
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_free to free ptr 0x7fbb587b1030
+Entering coalesce
+About to remove 0x7fbb587b1840 from freelist
+Entering sl_remove
+0x7fbb587b1840: header tag: [2000:free] footer tag: [2000:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [4064:free] footer tag: [4064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b2010
+Entering coalesce
+About to remove 0x7fbb587b1030 from freelist
+Entering sl_remove
+0x7fbb587b1030: header tag: [4064:free] footer tag: [4064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b1030
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+Entering sl_remove
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [32:free] footer tag: [32:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_insert_in_size_order
+0x7fbb587b1050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_remove
+0x7fbb587b1050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_free to free ptr 0x7fbb587b2050
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b1050
+Entering coalesce
+About to remove 0x7fbb587b1030 and 0x7fbb587b2050 from freelist
+Entering sl_remove
+0x7fbb587b1030: header tag: [32:free] footer tag: [32:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [8224:free] footer tag: [8224:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_init
+Entering sl_init
+Entering mm_malloc to allocate 2040 bytes
+Adjusted asize is 2064
+Entering sl_find_fit for 2064
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 2064
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b1030
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 2040 bytes
+Adjusted asize is 2064
+Entering sl_find_fit for 2064
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 2064
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b1840
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b1840
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 48 bytes
+Adjusted asize is 64
+Entering sl_find_fit for 64
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b1840
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+Entering sl_remove
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2000:free] footer tag: [2000:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_insert_in_size_order
+0x7fbb587b2010: header tag: [64:free] footer tag: [64:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_remove
+0x7fbb587b2010: header tag: [64:free] footer tag: [64:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 4096
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b2050
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b2050
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b2050
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_free to free ptr 0x7fbb587b1030
+Entering coalesce
+About to remove 0x7fbb587b1840 from freelist
+Entering sl_remove
+0x7fbb587b1840: header tag: [2000:free] footer tag: [2000:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [4064:free] footer tag: [4064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b2010
+Entering coalesce
+About to remove 0x7fbb587b1030 from freelist
+Entering sl_remove
+0x7fbb587b1030: header tag: [4064:free] footer tag: [4064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b1030
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+Entering sl_remove
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [32:free] footer tag: [32:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_insert_in_size_order
+0x7fbb587b1050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_remove
+0x7fbb587b1050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_free to free ptr 0x7fbb587b2050
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b1050
+Entering coalesce
+About to remove 0x7fbb587b1030 and 0x7fbb587b2050 from freelist
+Entering sl_remove
+0x7fbb587b1030: header tag: [32:free] footer tag: [32:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [8224:free] footer tag: [8224:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_init
+Entering sl_init
+Entering mm_malloc to allocate 2040 bytes
+Adjusted asize is 2064
+Entering sl_find_fit for 2064
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 2064
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b1030
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 2040 bytes
+Adjusted asize is 2064
+Entering sl_find_fit for 2064
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 2064
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b1840
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b1840
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 48 bytes
+Adjusted asize is 64
+Entering sl_find_fit for 64
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b1840
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+Entering sl_remove
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2000:free] footer tag: [2000:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_insert_in_size_order
+0x7fbb587b2010: header tag: [64:free] footer tag: [64:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_remove
+0x7fbb587b2010: header tag: [64:free] footer tag: [64:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 4096
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b2050
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b2050
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b2050
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_free to free ptr 0x7fbb587b1030
+Entering coalesce
+About to remove 0x7fbb587b1840 from freelist
+Entering sl_remove
+0x7fbb587b1840: header tag: [2000:free] footer tag: [2000:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [4064:free] footer tag: [4064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b2010
+Entering coalesce
+About to remove 0x7fbb587b1030 from freelist
+Entering sl_remove
+0x7fbb587b1030: header tag: [4064:free] footer tag: [4064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b1030
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+Entering sl_remove
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [32:free] footer tag: [32:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_insert_in_size_order
+0x7fbb587b1050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_remove
+0x7fbb587b1050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_free to free ptr 0x7fbb587b2050
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b1050
+Entering coalesce
+About to remove 0x7fbb587b1030 and 0x7fbb587b2050 from freelist
+Entering sl_remove
+0x7fbb587b1030: header tag: [32:free] footer tag: [32:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [8224:free] footer tag: [8224:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_init
+Entering sl_init
+Entering mm_malloc to allocate 2040 bytes
+Adjusted asize is 2064
+Entering sl_find_fit for 2064
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 2064
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b1030
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 2040 bytes
+Adjusted asize is 2064
+Entering sl_find_fit for 2064
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 2064
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b1840
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b1840
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 48 bytes
+Adjusted asize is 64
+Entering sl_find_fit for 64
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b1840
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+Entering sl_remove
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2000:free] footer tag: [2000:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_insert_in_size_order
+0x7fbb587b2010: header tag: [64:free] footer tag: [64:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_remove
+0x7fbb587b2010: header tag: [64:free] footer tag: [64:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 4096
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b2050
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b2050
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b2050
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_free to free ptr 0x7fbb587b1030
+Entering coalesce
+About to remove 0x7fbb587b1840 from freelist
+Entering sl_remove
+0x7fbb587b1840: header tag: [2000:free] footer tag: [2000:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [4064:free] footer tag: [4064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b2010
+Entering coalesce
+About to remove 0x7fbb587b1030 from freelist
+Entering sl_remove
+0x7fbb587b1030: header tag: [4064:free] footer tag: [4064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b1030
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+Entering sl_remove
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [32:free] footer tag: [32:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_insert_in_size_order
+0x7fbb587b1050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_remove
+0x7fbb587b1050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_free to free ptr 0x7fbb587b2050
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b1050
+Entering coalesce
+About to remove 0x7fbb587b1030 and 0x7fbb587b2050 from freelist
+Entering sl_remove
+0x7fbb587b1030: header tag: [32:free] footer tag: [32:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [8224:free] footer tag: [8224:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_init
+Entering sl_init
+Entering mm_malloc to allocate 2040 bytes
+Adjusted asize is 2064
+Entering sl_find_fit for 2064
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 2064
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b1030
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 2040 bytes
+Adjusted asize is 2064
+Entering sl_find_fit for 2064
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 2064
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b1840
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b1840
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 48 bytes
+Adjusted asize is 64
+Entering sl_find_fit for 64
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b1840
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+Entering sl_remove
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2000:free] footer tag: [2000:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_insert_in_size_order
+0x7fbb587b2010: header tag: [64:free] footer tag: [64:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_remove
+0x7fbb587b2010: header tag: [64:free] footer tag: [64:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 4096
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b2050
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b2050
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b2050
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_free to free ptr 0x7fbb587b1030
+Entering coalesce
+About to remove 0x7fbb587b1840 from freelist
+Entering sl_remove
+0x7fbb587b1840: header tag: [2000:free] footer tag: [2000:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [4064:free] footer tag: [4064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b2010
+Entering coalesce
+About to remove 0x7fbb587b1030 from freelist
+Entering sl_remove
+0x7fbb587b1030: header tag: [4064:free] footer tag: [4064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b1030
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+Entering sl_remove
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [32:free] footer tag: [32:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_insert_in_size_order
+0x7fbb587b1050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_remove
+0x7fbb587b1050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_free to free ptr 0x7fbb587b2050
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b1050
+Entering coalesce
+About to remove 0x7fbb587b1030 and 0x7fbb587b2050 from freelist
+Entering sl_remove
+0x7fbb587b1030: header tag: [32:free] footer tag: [32:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [8224:free] footer tag: [8224:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_init
+Entering sl_init
+Entering mm_malloc to allocate 2040 bytes
+Adjusted asize is 2064
+Entering sl_find_fit for 2064
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 2064
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b1030
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 2040 bytes
+Adjusted asize is 2064
+Entering sl_find_fit for 2064
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 2064
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b1840
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b1840
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 48 bytes
+Adjusted asize is 64
+Entering sl_find_fit for 64
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b1840
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+Entering sl_remove
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2000:free] footer tag: [2000:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_insert_in_size_order
+0x7fbb587b2010: header tag: [64:free] footer tag: [64:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_remove
+0x7fbb587b2010: header tag: [64:free] footer tag: [64:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 4096
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b2050
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b2050
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b2050
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_free to free ptr 0x7fbb587b1030
+Entering coalesce
+About to remove 0x7fbb587b1840 from freelist
+Entering sl_remove
+0x7fbb587b1840: header tag: [2000:free] footer tag: [2000:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [4064:free] footer tag: [4064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b2010
+Entering coalesce
+About to remove 0x7fbb587b1030 from freelist
+Entering sl_remove
+0x7fbb587b1030: header tag: [4064:free] footer tag: [4064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b1030
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+Entering sl_remove
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [32:free] footer tag: [32:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_insert_in_size_order
+0x7fbb587b1050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_remove
+0x7fbb587b1050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_free to free ptr 0x7fbb587b2050
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b1050
+Entering coalesce
+About to remove 0x7fbb587b1030 and 0x7fbb587b2050 from freelist
+Entering sl_remove
+0x7fbb587b1030: header tag: [32:free] footer tag: [32:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [8224:free] footer tag: [8224:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_init
+Entering sl_init
+Entering mm_malloc to allocate 2040 bytes
+Adjusted asize is 2064
+Entering sl_find_fit for 2064
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 2064
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b1030
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 2040 bytes
+Adjusted asize is 2064
+Entering sl_find_fit for 2064
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 2064
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b1840
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b1840
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 48 bytes
+Adjusted asize is 64
+Entering sl_find_fit for 64
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b1840
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+Entering sl_remove
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2000:free] footer tag: [2000:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_insert_in_size_order
+0x7fbb587b2010: header tag: [64:free] footer tag: [64:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_remove
+0x7fbb587b2010: header tag: [64:free] footer tag: [64:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 4096
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b2050
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b2050
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b2050
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_free to free ptr 0x7fbb587b1030
+Entering coalesce
+About to remove 0x7fbb587b1840 from freelist
+Entering sl_remove
+0x7fbb587b1840: header tag: [2000:free] footer tag: [2000:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [4064:free] footer tag: [4064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b2010
+Entering coalesce
+About to remove 0x7fbb587b1030 from freelist
+Entering sl_remove
+0x7fbb587b1030: header tag: [4064:free] footer tag: [4064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b1030
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+Entering sl_remove
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [32:free] footer tag: [32:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_insert_in_size_order
+0x7fbb587b1050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_remove
+0x7fbb587b1050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_free to free ptr 0x7fbb587b2050
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b1050
+Entering coalesce
+About to remove 0x7fbb587b1030 and 0x7fbb587b2050 from freelist
+Entering sl_remove
+0x7fbb587b1030: header tag: [32:free] footer tag: [32:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [8224:free] footer tag: [8224:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_init
+Entering sl_init
+Entering mm_malloc to allocate 2040 bytes
+Adjusted asize is 2064
+Entering sl_find_fit for 2064
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 2064
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b1030
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b1030: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 2040 bytes
+Adjusted asize is 2064
+Entering sl_find_fit for 2064
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 2064
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b1840
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b1840
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 48 bytes
+Adjusted asize is 64
+Entering sl_find_fit for 64
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b1840
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+Entering sl_remove
+0x7fbb587b1840: header tag: [2064:free] footer tag: [2064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1840: header tag: [2000:free] footer tag: [2000:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_insert_in_size_order
+0x7fbb587b2010: header tag: [64:free] footer tag: [64:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_remove
+0x7fbb587b2010: header tag: [64:free] footer tag: [64:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering extend_heap by 4096
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_split_remove_place for 0x7fbb587b2050
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+list extended
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b2050
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b2050
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+Couldn't split
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_free to free ptr 0x7fbb587b1030
+Entering coalesce
+About to remove 0x7fbb587b1840 from freelist
+Entering sl_remove
+0x7fbb587b1840: header tag: [2000:free] footer tag: [2000:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [4064:free] footer tag: [4064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b2010
+Entering coalesce
+About to remove 0x7fbb587b1030 from freelist
+Entering sl_remove
+0x7fbb587b1030: header tag: [4064:free] footer tag: [4064:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_malloc to allocate 4072 bytes
+Adjusted asize is 4096
+Entering sl_find_fit for 4096
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering sl_split_remove_place for 0x7fbb587b1030
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering split
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+Entering sl_remove
+0x7fbb587b1030: header tag: [4128:free] footer tag: [4128:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [32:free] footer tag: [32:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_insert_in_size_order
+0x7fbb587b1050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+Entering sl_remove
+0x7fbb587b1050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_split_remove_place
+Entering mm_free to free ptr 0x7fbb587b2050
+Entering coalesce
+Entering sl_insert_in_size_order
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Entering mm_free to free ptr 0x7fbb587b1050
+Entering coalesce
+About to remove 0x7fbb587b1030 and 0x7fbb587b2050 from freelist
+Entering sl_remove
+0x7fbb587b1030: header tag: [32:free] footer tag: [32:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_remove
+0x7fbb587b2050: header tag: [4096:free] footer tag: [4096:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_remove
+Entering sl_insert_in_size_order
+0x7fbb587b1030: header tag: [8224:free] footer tag: [8224:free]
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Exiting sl_insert_in_size_order
+
+===== Entering mm_check =====
+===== Leaving mm_check =====
+
+Perf index = 59/60 (util) + 2/40 (thru) = 61/100
