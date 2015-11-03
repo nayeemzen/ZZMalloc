@@ -32,7 +32,7 @@ team_t team = {
     /* Second member's full name (leave blank if none) */
     "Nayeem Husain Zen",
     /* Second member's email address (leave blank if none) */
-    "nayeem.zen@mail.utoronot.ca"
+    "nayeem.zen@mail.utoronto.ca"
 };
 
 /*************************************************************************
@@ -44,7 +44,7 @@ team_t team = {
 #define CHUNKSIZE   (1<<7)      /* initial heap size (bytes) */
 
 #define MAX(x,y) ((x) > (y)?(x) :(y))
-
+#define MIN(x,y) ((x) < (y)?(x): (y))
 /* Pack a size and allocated bit into a word */
 #define PACK(size, alloc) ((size) | (alloc))
 
@@ -66,6 +66,146 @@ team_t team = {
 
 void* heap_listp = NULL;
 
+/* Implementation data structures */
+typedef struct list_block {
+    struct list_block *prev;
+    struct list_block *next;
+} list_block;
+
+/* Implementation globals and macros */
+#define NUM_LISTS 8
+#define MIN_BLOCK_SIZE 2 * DSIZE
+#define DBG 0
+#define DBG_PRINT(...) DBG ? printf(__VA_ARGS__): (void)NULL;
+#define DBG_ASSERT(expr) DBG ? assert(expr): (void)NULL;
+
+// Global segregated lists of different size classes
+list_block *seg_lists[NUM_LISTS];
+
+/* Implementation functions */
+void seg_list_init(void) {
+    int i;
+    for(i = 0; i < NUM_LISTS; i++) {
+        seg_lists[i] = NULL;
+    }
+}
+
+// TODO(Zen): Improve from O(n) -> O(1)
+int calc_size_class(size_t sz) {
+    DBG_ASSERT(sz >= MIN_BLOCK_SIZE);
+    DBG_ASSERT(sz % 16 == 0);
+
+    int i = 0, bucket_sz = MIN_BLOCK_SIZE;
+    while(sz > bucket_sz && i < NUM_LISTS) {
+        bucket_sz = bucket_sz << 1;
+        i++;
+    }
+
+    return MIN(i, NUM_LISTS - 1);
+}
+
+void seg_list_print(void) {
+#ifdef DBG
+    int i;
+    for (i = 0; i < NUM_LISTS; i++) {
+        DBG_PRINT("printing seg_lists[%d]\n", i);
+        list_block *ls = seg_lists[i];
+        if (!ls) continue;
+        do {
+            DBG_PRINT("\tblock of size: %lu @ 0x%p\n", GET_SIZE(HDRP((void*)ls)), (void*)ls);
+            ls = ls->next;
+        } while (ls != seg_lists[i]); 
+    }
+#endif
+}
+
+void seg_list_add(list_block* bp) {
+    int bsize = GET_SIZE(HDRP(bp));
+    // Get the size class for block of bsize;
+    int sz_cls = calc_size_class(bsize);
+    list_block *list = seg_lists[sz_cls];
+    
+    DBG_PRINT("Inserting to seg_lists[%d] @ 0x%p, block size: %d\n", sz_cls, (void*)list, bsize);
+    if (!list) {
+        DBG_PRINT("list@%d is empty!!\n", sz_cls);
+        seg_lists[sz_cls] = bp;
+        seg_lists[sz_cls]->next = bp;
+        seg_lists[sz_cls]->prev = bp;
+        seg_list_print();
+        return;
+    }
+    
+    // seg list is not empty, insert bp at head
+    bp->next = seg_lists[sz_cls];
+    bp->prev = seg_lists[sz_cls]->prev;
+    bp->prev->next = bp;
+    bp->next->prev = bp;
+
+#ifdef DBG
+    seg_list_print();
+#endif
+}
+
+void seg_list_remove(list_block* blk) {
+    if (!blk) return;
+    size_t sz = GET_SIZE(HDRP(blk));
+    int sz_cls = calc_size_class(sz);
+    if (blk != blk->next) {
+        if (blk->prev && blk->next) {
+            blk->prev->next = blk->next;
+            blk->next->prev = blk->prev;
+        }
+        
+        // if blk is the head of the list
+        if (blk == seg_lists[sz_cls]) {
+            seg_lists[sz_cls] = blk->next;
+        }
+
+        return;
+    }
+
+    seg_lists[sz_cls] = NULL;
+}
+
+void * seg_list_find_fit(size_t sz) {
+    int sz_cls;
+    for(sz_cls = calc_size_class(sz); sz_cls < NUM_LISTS; sz_cls++) {
+        list_block *blk = seg_lists[sz_cls];
+        if (!blk) continue;
+        do {
+            size_t blk_sz = GET_SIZE(HDRP(blk));
+            // Search for blocks that are >= sz
+            if (blk_sz < sz) {
+                blk = blk->next;
+                continue;
+            }
+
+            size_t rem_size = blk_sz - sz;
+            //TODO(Zen): Remove repeated code (repeated in place)
+            // Can't be split to produce another free block
+            if (rem_size < MIN_BLOCK_SIZE) {
+                seg_list_remove(blk);
+                return (void*)blk;
+            }
+            
+            // Split block and put excess fragment into appropriate size class
+            // Remove block from current size_class
+            seg_list_remove(blk);
+            PUT(HDRP(blk), PACK(sz, 1));
+            PUT(FTRP(blk), PACK(sz, 1)); 
+
+            // Mark next block of size rem_size as empty and add to seg_list
+            PUT(HDRP(NEXT_BLKP(blk)), PACK(rem_size, 0));
+            PUT(FTRP(NEXT_BLKP(blk)), PACK(rem_size, 0));
+            seg_list_add((list_block*)NEXT_BLKP(blk));
+            
+            return blk;
+        } while (blk != seg_lists[sz_cls]); 
+    }
+
+    return NULL;
+}
+
 /**********************************************************
  * mm_init
  * Initialize the heap, including "allocation" of the
@@ -80,7 +220,8 @@ void* heap_listp = NULL;
      PUT(heap_listp + (2 * WSIZE), PACK(DSIZE, 1));   // prologue footer
      PUT(heap_listp + (3 * WSIZE), PACK(0, 1));    // epilogue header
      heap_listp += DSIZE;
-
+     
+     seg_list_init();
      return 0;
  }
 
@@ -103,6 +244,7 @@ void *coalesce(void *bp)
     }
 
     else if (prev_alloc && !next_alloc) { /* Case 2 */
+        seg_list_remove((list_block*)NEXT_BLKP(bp));
         size += GET_SIZE(HDRP(NEXT_BLKP(bp)));
         PUT(HDRP(bp), PACK(size, 0));
         PUT(FTRP(bp), PACK(size, 0));
@@ -110,6 +252,7 @@ void *coalesce(void *bp)
     }
 
     else if (!prev_alloc && next_alloc) { /* Case 3 */
+        seg_list_remove((list_block*)PREV_BLKP(bp));
         size += GET_SIZE(HDRP(PREV_BLKP(bp)));
         PUT(FTRP(bp), PACK(size, 0));
         PUT(HDRP(PREV_BLKP(bp)), PACK(size, 0));
@@ -117,6 +260,8 @@ void *coalesce(void *bp)
     }
 
     else {            /* Case 4 */
+        seg_list_remove((list_block*)PREV_BLKP(bp));
+        seg_list_remove((list_block*)NEXT_BLKP(bp));
         size += GET_SIZE(HDRP(PREV_BLKP(bp)))  +
             GET_SIZE(FTRP(NEXT_BLKP(bp)))  ;
         PUT(HDRP(PREV_BLKP(bp)), PACK(size,0));
@@ -178,9 +323,25 @@ void place(void* bp, size_t asize)
 {
   /* Get the current block size */
   size_t bsize = GET_SIZE(HDRP(bp));
-
-  PUT(HDRP(bp), PACK(bsize, 1));
-  PUT(FTRP(bp), PACK(bsize, 1));
+  DBG_ASSERT(bsize >= asize);
+  DBG_ASSERT(asize % 16 == 0);
+  
+  size_t rem_size = bsize - asize;
+  if (rem_size < MIN_BLOCK_SIZE) {
+      DBG_PRINT("Could not split\n");
+      PUT(HDRP(bp), PACK(bsize, 1));
+      PUT(FTRP(bp), PACK(bsize, 1));
+      return;
+  }
+  
+  // Can successfully split, allocate block of asize
+  PUT(HDRP(bp), PACK(asize, 1));
+  PUT(FTRP(bp), PACK(asize, 1)); 
+  
+  // Mark next block of size rem_size as empty and add to seg_list
+  PUT(HDRP(NEXT_BLKP(bp)), PACK(rem_size, 0));
+  PUT(FTRP(NEXT_BLKP(bp)), PACK(rem_size, 0));
+  seg_list_add((list_block*)NEXT_BLKP(bp));
 }
 
 /**********************************************************
@@ -188,14 +349,17 @@ void place(void* bp, size_t asize)
  * Free the block and coalesce with neighbouring blocks
  **********************************************************/
 void mm_free(void *bp)
-{
+{   
     if(bp == NULL){
       return;
     }
+    
+    DBG_PRINT("Free request for 0x%p size of %lu\n", bp, GET_SIZE(HDRP(bp)));
+    
     size_t size = GET_SIZE(HDRP(bp));
     PUT(HDRP(bp), PACK(size,0));
     PUT(FTRP(bp), PACK(size,0));
-    coalesce(bp);
+    seg_list_add(coalesce(bp));
 }
 
 
@@ -212,7 +376,7 @@ void *mm_malloc(size_t size)
     size_t asize; /* adjusted block size */
     size_t extendsize; /* amount to extend heap if no fit */
     char * bp;
-
+    
     /* Ignore spurious requests */
     if (size == 0)
         return NULL;
@@ -222,9 +386,10 @@ void *mm_malloc(size_t size)
         asize = 2 * DSIZE;
     else
         asize = DSIZE * ((size + (DSIZE) + (DSIZE-1))/ DSIZE);
-
+    
+    DBG_PRINT("Malloc request size: %lu\n", asize);
     /* Search the free list for a fit */
-    if ((bp = find_fit(asize)) != NULL) {
+    if ((bp = seg_list_find_fit(asize)) != NULL) {
         place(bp, asize);
         return bp;
     }

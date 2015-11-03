@@ -1,0 +1,200 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+CC	../assn/Makefile	/^CC = gcc$/;"	m
+CC	Makefile	/^CC = gcc$/;"	m
+CFLAGS	../assn/Makefile	/^CFLAGS =  -Wall -O1 -g$/;"	m
+CFLAGS	Makefile	/^CFLAGS =  -Wall -O1 -g$/;"	m
+CHUNKSIZE	../assn/mm.c	44;"	d	file:
+CHUNKSIZE	../assn/mm.nv.c	47;"	d	file:
+CHUNKSIZE	mm.c	44;"	d	file:
+CHUNKSIZE	mm.nv.c	47;"	d	file:
+DBG	../assn/mm.c	78;"	d	file:
+DBG	mm.c	78;"	d	file:
+DBG_ASSERT	../assn/mm.c	80;"	d	file:
+DBG_ASSERT	../assn/mm.nv.c	79;"	d	file:
+DBG_ASSERT	../assn/mm.nv.c	82;"	d	file:
+DBG_ASSERT	mm.c	80;"	d	file:
+DBG_ASSERT	mm.nv.c	79;"	d	file:
+DBG_ASSERT	mm.nv.c	82;"	d	file:
+DBG_PRINT	../assn/mm.c	79;"	d	file:
+DBG_PRINT	mm.c	79;"	d	file:
+DBG_PRINTF	../assn/mm.nv.c	78;"	d	file:
+DBG_PRINTF	../assn/mm.nv.c	81;"	d	file:
+DBG_PRINTF	mm.nv.c	78;"	d	file:
+DBG_PRINTF	mm.nv.c	81;"	d	file:
+DSIZE	../assn/mm.c	43;"	d	file:
+DSIZE	../assn/mm.nv.c	46;"	d	file:
+DSIZE	mm.c	43;"	d	file:
+DSIZE	mm.nv.c	46;"	d	file:
+FTRP	../assn/mm.c	61;"	d	file:
+FTRP	../assn/mm.nv.c	65;"	d	file:
+FTRP	mm.c	61;"	d	file:
+FTRP	mm.nv.c	65;"	d	file:
+GET	../assn/mm.c	52;"	d	file:
+GET	../assn/mm.nv.c	56;"	d	file:
+GET	mm.c	52;"	d	file:
+GET	mm.nv.c	56;"	d	file:
+GET_ALLOC	../assn/mm.c	57;"	d	file:
+GET_ALLOC	../assn/mm.nv.c	61;"	d	file:
+GET_ALLOC	mm.c	57;"	d	file:
+GET_ALLOC	mm.nv.c	61;"	d	file:
+GET_SIZE	../assn/mm.c	56;"	d	file:
+GET_SIZE	../assn/mm.nv.c	60;"	d	file:
+GET_SIZE	mm.c	56;"	d	file:
+GET_SIZE	mm.nv.c	60;"	d	file:
+HDRP	../assn/mm.c	60;"	d	file:
+HDRP	../assn/mm.nv.c	64;"	d	file:
+HDRP	mm.c	60;"	d	file:
+HDRP	mm.nv.c	64;"	d	file:
+MAX	../assn/mm.c	46;"	d	file:
+MAX	../assn/mm.nv.c	49;"	d	file:
+MAX	mm.c	46;"	d	file:
+MAX	mm.nv.c	49;"	d	file:
+MIN	../assn/mm.nv.c	50;"	d	file:
+MIN	mm.nv.c	50;"	d	file:
+MIN_BLOCK_SIZE	../assn/mm.c	77;"	d	file:
+MIN_BLOCK_SIZE	mm.c	77;"	d	file:
+NEXT_BLKP	../assn/mm.c	64;"	d	file:
+NEXT_BLKP	../assn/mm.nv.c	68;"	d	file:
+NEXT_BLKP	mm.c	64;"	d	file:
+NEXT_BLKP	mm.nv.c	68;"	d	file:
+NEXT_FREE_BLKP	../assn/mm.nv.c	74;"	d	file:
+NEXT_FREE_BLKP	mm.nv.c	74;"	d	file:
+NEXT_FREE_BLKP_PTR	../assn/mm.nv.c	72;"	d	file:
+NEXT_FREE_BLKP_PTR	mm.nv.c	72;"	d	file:
+NUM_LISTS	../assn/mm.c	76;"	d	file:
+NUM_LISTS	mm.c	76;"	d	file:
+OBJS	../assn/Makefile	/^OBJS = mdriver.o mm.o memlib.o fsecs.o fcyc.o clock.o ftimer.o$/;"	m
+OBJS	Makefile	/^OBJS = mdriver.o mm.o memlib.o fsecs.o fcyc.o clock.o ftimer.o$/;"	m
+PACK	../assn/mm.c	49;"	d	file:
+PACK	../assn/mm.nv.c	53;"	d	file:
+PACK	mm.c	49;"	d	file:
+PACK	mm.nv.c	53;"	d	file:
+PREV_BLKP	../assn/mm.c	65;"	d	file:
+PREV_BLKP	../assn/mm.nv.c	69;"	d	file:
+PREV_BLKP	mm.c	65;"	d	file:
+PREV_BLKP	mm.nv.c	69;"	d	file:
+PREV_FREE_BLKP	../assn/mm.nv.c	75;"	d	file:
+PREV_FREE_BLKP	mm.nv.c	75;"	d	file:
+PREV_FREE_BLKP_PTR	../assn/mm.nv.c	73;"	d	file:
+PREV_FREE_BLKP_PTR	mm.nv.c	73;"	d	file:
+PUT	../assn/mm.c	53;"	d	file:
+PUT	../assn/mm.nv.c	57;"	d	file:
+PUT	mm.c	53;"	d	file:
+PUT	mm.nv.c	57;"	d	file:
+SL_BUCKET_CEILING	../assn/mm.nv.c	94;"	d	file:
+SL_BUCKET_CEILING	mm.nv.c	94;"	d	file:
+SL_SIZE	../assn/mm.nv.c	92;"	d	file:
+SL_SIZE	mm.nv.c	92;"	d	file:
+SL_SMALLEST_BUCKET_FLOOR	../assn/mm.nv.c	93;"	d	file:
+SL_SMALLEST_BUCKET_FLOOR	mm.nv.c	93;"	d	file:
+WSIZE	../assn/mm.c	42;"	d	file:
+WSIZE	../assn/mm.nv.c	45;"	d	file:
+WSIZE	mm.c	42;"	d	file:
+WSIZE	mm.nv.c	45;"	d	file:
+calc_size_class	../assn/mm.c	/^int calc_size_class(size_t sz) {$/;"	f
+calc_size_class	mm.c	/^int calc_size_class(size_t sz) {$/;"	f
+checkblock	../assn/mm.nv.c	/^static void checkblock(void *bp)$/;"	f	file:
+checkblock	mm.nv.c	/^static void checkblock(void *bp)$/;"	f	file:
+coalesce	../assn/mm.c	/^void *coalesce(void *bp)$/;"	f
+coalesce	../assn/mm.nv.c	/^void *coalesce(void *bp)$/;"	f
+coalesce	mm.c	/^void *coalesce(void *bp)$/;"	f
+coalesce	mm.nv.c	/^void *coalesce(void *bp)$/;"	f
+extend_heap	../assn/mm.c	/^void *extend_heap(size_t words)$/;"	f
+extend_heap	../assn/mm.nv.c	/^void *extend_heap(size_t words)$/;"	f
+extend_heap	mm.c	/^void *extend_heap(size_t words)$/;"	f
+extend_heap	mm.nv.c	/^void *extend_heap(size_t words)$/;"	f
+find_fit	../assn/mm.c	/^void * find_fit(size_t asize)$/;"	f
+find_fit	mm.c	/^void * find_fit(size_t asize)$/;"	f
+heap_listp	../assn/mm.c	/^void* heap_listp = NULL;$/;"	v
+heap_listp	../assn/mm.nv.c	/^void *heap_listp = NULL;$/;"	v
+heap_listp	mm.c	/^void* heap_listp = NULL;$/;"	v
+heap_listp	mm.nv.c	/^void *heap_listp = NULL;$/;"	v
+id1	../assn/mm.h	/^    char *id1;      \/* Login ID of first member. *\/$/;"	m	struct:__anon2
+id1	mm.h	/^    char *id1;      \/* Login ID of first member. *\/$/;"	m	struct:__anon1
+id2	../assn/mm.h	/^    char *id2;      \/* Login ID of second member. *\/$/;"	m	struct:__anon2
+id2	mm.h	/^    char *id2;      \/* Login ID of second member. *\/$/;"	m	struct:__anon1
+list_block	../assn/mm.c	/^typedef struct list_block {$/;"	s	file:
+list_block	../assn/mm.c	/^} list_block;$/;"	t	typeref:struct:list_block	file:
+list_block	mm.c	/^typedef struct list_block {$/;"	s	file:
+list_block	mm.c	/^} list_block;$/;"	t	typeref:struct:list_block	file:
+main	../assn/test.c	/^int main() {$/;"	f
+main	test.c	/^int main() {$/;"	f
+mm_check	../assn/mm.c	/^int mm_check(void){$/;"	f
+mm_check	../assn/mm.nv.c	/^int mm_check(void){$/;"	f
+mm_check	mm.c	/^int mm_check(void){$/;"	f
+mm_check	mm.nv.c	/^int mm_check(void){$/;"	f
+mm_free	../assn/mm.c	/^void mm_free(void *bp)$/;"	f
+mm_free	../assn/mm.nv.c	/^void mm_free(void *bp)$/;"	f
+mm_free	mm.c	/^void mm_free(void *bp)$/;"	f
+mm_free	mm.nv.c	/^void mm_free(void *bp)$/;"	f
+mm_init	../assn/mm.c	/^ int mm_init(void)$/;"	f
+mm_init	../assn/mm.nv.c	/^int mm_init(void)$/;"	f
+mm_init	mm.c	/^ int mm_init(void)$/;"	f
+mm_init	mm.nv.c	/^int mm_init(void)$/;"	f
+mm_malloc	../assn/mm.c	/^void *mm_malloc(size_t size)$/;"	f
+mm_malloc	../assn/mm.nv.c	/^void *mm_malloc(size_t size)$/;"	f
+mm_malloc	mm.c	/^void *mm_malloc(size_t size)$/;"	f
+mm_malloc	mm.nv.c	/^void *mm_malloc(size_t size)$/;"	f
+mm_realloc	../assn/mm.c	/^void *mm_realloc(void *ptr, size_t size)$/;"	f
+mm_realloc	../assn/mm.nv.c	/^void *mm_realloc(void *ptr, size_t size)$/;"	f
+mm_realloc	mm.c	/^void *mm_realloc(void *ptr, size_t size)$/;"	f
+mm_realloc	mm.nv.c	/^void *mm_realloc(void *ptr, size_t size)$/;"	f
+name1	../assn/mm.h	/^    char *name1;    \/* Full name of first member. *\/$/;"	m	struct:__anon2
+name1	mm.h	/^    char *name1;    \/* Full name of first member. *\/$/;"	m	struct:__anon1
+name2	../assn/mm.h	/^    char *name2;    \/* Full name of second member (if any). *\/$/;"	m	struct:__anon2
+name2	mm.h	/^    char *name2;    \/* Full name of second member (if any). *\/$/;"	m	struct:__anon1
+next	../assn/mm.c	/^    struct list_block *next;$/;"	m	struct:list_block	typeref:struct:list_block::list_block	file:
+next	mm.c	/^    struct list_block *next;$/;"	m	struct:list_block	typeref:struct:list_block::list_block	file:
+place	../assn/mm.c	/^void place(void* bp, size_t asize)$/;"	f
+place	mm.c	/^void place(void* bp, size_t asize)$/;"	f
+prev	../assn/mm.c	/^    struct list_block *prev;$/;"	m	struct:list_block	typeref:struct:list_block::list_block	file:
+prev	mm.c	/^    struct list_block *prev;$/;"	m	struct:list_block	typeref:struct:list_block::list_block	file:
+printblock	../assn/mm.nv.c	/^static void printblock(void *bp)$/;"	f	file:
+printblock	mm.nv.c	/^static void printblock(void *bp)$/;"	f	file:
+seg_list_add	../assn/mm.c	/^void seg_list_add(list_block* bp) {$/;"	f
+seg_list_add	mm.c	/^void seg_list_add(list_block* bp) {$/;"	f
+seg_list_find_fit	../assn/mm.c	/^void * seg_list_find_fit(size_t sz) {$/;"	f
+seg_list_find_fit	mm.c	/^void * seg_list_find_fit(size_t sz) {$/;"	f
+seg_list_init	../assn/mm.c	/^void seg_list_init(void) {$/;"	f
+seg_list_init	mm.c	/^void seg_list_init(void) {$/;"	f
+seg_list_print	../assn/mm.c	/^void seg_list_print(void) {$/;"	f
+seg_list_print	mm.c	/^void seg_list_print(void) {$/;"	f
+seg_list_remove	../assn/mm.c	/^void seg_list_remove(list_block* blk) {$/;"	f
+seg_list_remove	mm.c	/^void seg_list_remove(list_block* blk) {$/;"	f
+seg_lists	../assn/mm.c	/^list_block *seg_lists[NUM_LISTS];$/;"	v
+seg_lists	mm.c	/^list_block *seg_lists[NUM_LISTS];$/;"	v
+sl	../assn/mm.nv.c	/^static void *sl[SL_SIZE];$/;"	v	file:
+sl	mm.nv.c	/^static void *sl[SL_SIZE];$/;"	v	file:
+sl_bsize_to_bucket_index	../assn/mm.nv.c	/^int sl_bsize_to_bucket_index(size_t bsize) {$/;"	f
+sl_bsize_to_bucket_index	mm.nv.c	/^int sl_bsize_to_bucket_index(size_t bsize) {$/;"	f
+sl_crop	../assn/mm.nv.c	/^void sl_crop(void *bp, size_t asize) {$/;"	f
+sl_crop	mm.nv.c	/^void sl_crop(void *bp, size_t asize) {$/;"	f
+sl_exists	../assn/mm.nv.c	/^int sl_exists(void *bp) {$/;"	f
+sl_exists	mm.nv.c	/^int sl_exists(void *bp) {$/;"	f
+sl_find_fit	../assn/mm.nv.c	/^void * sl_find_fit(size_t asize) {$/;"	f
+sl_find_fit	mm.nv.c	/^void * sl_find_fit(size_t asize) {$/;"	f
+sl_init	../assn/mm.nv.c	/^void sl_init(void) {$/;"	f
+sl_init	mm.nv.c	/^void sl_init(void) {$/;"	f
+sl_insert	../assn/mm.nv.c	/^void sl_insert(void *bp) {$/;"	f
+sl_insert	mm.nv.c	/^void sl_insert(void *bp) {$/;"	f
+sl_print	../assn/mm.nv.c	/^void sl_print(void) {$/;"	f
+sl_print	mm.nv.c	/^void sl_print(void) {$/;"	f
+sl_remove	../assn/mm.nv.c	/^void sl_remove(void *bp) {$/;"	f
+sl_remove	mm.nv.c	/^void sl_remove(void *bp) {$/;"	f
+sl_split	../assn/mm.nv.c	/^void * sl_split(void *bp, size_t asize) {$/;"	f
+sl_split	mm.nv.c	/^void * sl_split(void *bp, size_t asize) {$/;"	f
+sl_split_remove_place	../assn/mm.nv.c	/^void * sl_split_remove_place(void* bp, size_t asize) {$/;"	f
+sl_split_remove_place	mm.nv.c	/^void * sl_split_remove_place(void* bp, size_t asize) {$/;"	f
+team	../assn/mm.c	/^team_t team = {$/;"	v
+team	../assn/mm.nv.c	/^team_t team = {$/;"	v
+team	mm.c	/^team_t team = {$/;"	v
+team	mm.nv.c	/^team_t team = {$/;"	v
+team_t	../assn/mm.h	/^} team_t;$/;"	t	typeref:struct:__anon2
+team_t	mm.h	/^} team_t;$/;"	t	typeref:struct:__anon1
+teamname	../assn/mm.h	/^    char *teamname; \/* ID1+ID2 or ID1 *\/$/;"	m	struct:__anon2
+teamname	mm.h	/^    char *teamname; \/* ID1+ID2 or ID1 *\/$/;"	m	struct:__anon1
