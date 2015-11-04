@@ -75,7 +75,12 @@ typedef struct list_block {
 /* Implementation globals and macros */
 #define NUM_LISTS 8
 #define MIN_BLOCK_SIZE 2 * DSIZE
+
+// allow configuring debug via commandline -DDBG
+#ifndef DBG
 #define DBG 0
+#endif
+
 #define DBG_PRINT(...) DBG ? printf(__VA_ARGS__): (void)NULL;
 #define DBG_ASSERT(expr) DBG ? assert(expr): (void)NULL;
 
