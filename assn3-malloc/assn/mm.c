@@ -92,6 +92,8 @@ typedef struct list_block {
 // Global segregated lists of different size classes
 list_block *seg_lists[NUM_LISTS];
 
+void* epilogue = NULL;
+
 /* Implementation functions */
 void seg_list_init(void) {
     int i;
@@ -142,7 +144,10 @@ void seg_list_add(list_block* bp) {
     // Get the size class for block of bsize;
     int sz_cls = calc_size_class(bsize);
     list_block *list = seg_lists[sz_cls];
-    
+
+    DBG_ASSERT(GET(HDRP(bp)) == GET(FTRP(bp)));
+    DBG_ASSERT(bsize >= 2*DSIZE);
+
     DBG_PRINT("Inserting to seg_lists[%d] @ 0x%p, block size: %d\n", sz_cls, (void*)list, bsize);
     if (!list) {
         DBG_PRINT("list@%d is empty!!\n", sz_cls);
@@ -175,7 +180,12 @@ void seg_list_add(list_block* bp) {
 void seg_list_remove(list_block* blk) {
     if (!blk) return;
     size_t sz = GET_SIZE(HDRP(blk));
+
+    DBG_PRINT("size from header = %d,size from footer = %d\n", GET_SIZE(HDRP(blk)), GET_SIZE(FTRP(blk)));
+    DBG_ASSERT(GET(HDRP(blk)) == GET(FTRP(blk)));
+
     int sz_cls = calc_size_class(sz);
+    DBG_ASSERT(sz >= 2*DSIZE);
     if (blk != blk->next) {
         if (blk->prev && blk->next) {
             blk->prev->next = blk->next;
@@ -223,6 +233,8 @@ void * seg_list_find_fit(size_t sz) {
             // Mark next block of size rem_size as empty and add to seg_list
             PUT(HDRP(NEXT_BLKP(blk)), PACK(rem_size, 0));
             PUT(FTRP(NEXT_BLKP(blk)), PACK(rem_size, 0));
+
+	    //coalesce before adding?
             seg_list_add((list_block*)NEXT_BLKP(blk));
             
             return blk;
@@ -317,6 +329,8 @@ void *extend_heap(size_t words)
     PUT(FTRP(bp), PACK(size, 0));                // free block footer
     PUT(HDRP(NEXT_BLKP(bp)), PACK(0, 1));        // new epilogue header
 
+    epilogue = NEXT_BLKP(bp);
+
     /* Coalesce if the previous block was free */
     return coalesce(bp);
 }
@@ -363,10 +377,13 @@ void place(void* bp, size_t asize)
   // Can successfully split, allocate block of asize
   PUT(HDRP(bp), PACK(asize, 1));
   PUT(FTRP(bp), PACK(asize, 1)); 
+  DBG_PRINT("allocated block at %p, size from header = %d, size from foote = %d\n", bp, GET_SIZE(HDRP(bp)), GET_SIZE(FTRP(bp)));
+
   
   // Mark next block of size rem_size as empty and add to seg_list
   PUT(HDRP(NEXT_BLKP(bp)), PACK(rem_size, 0));
   PUT(FTRP(NEXT_BLKP(bp)), PACK(rem_size, 0));
+  //coalesce?
   seg_list_add((list_block*)NEXT_BLKP(bp));
 }
 
@@ -436,6 +453,8 @@ void *mm_malloc(size_t size)
 void *mm_realloc(void *ptr, size_t size)
 {   
     int orig_sz = GET_SIZE(HDRP(ptr));
+    DBG_ASSERT(GET(HDRP(ptr)) == GET(FTRP(ptr)));
+
     DBG_PRINT("realloc request for 0x%p orig_sz: %d, request_size: %d\n", ptr, orig_sz, size);
     /* If size == 0 then this is just free, and we return NULL. */
     if(size == 0){
@@ -454,6 +473,7 @@ void *mm_realloc(void *ptr, size_t size)
         asize = DSIZE * ((size + (DSIZE) + (DSIZE-1))/ DSIZE);
 
 
+    DBG_PRINT("heap epilogue now at:%p\n", epilogue);
     if (asize == orig_sz){
         return ptr;
     }else if (asize < orig_sz){
@@ -469,15 +489,17 @@ void *mm_realloc(void *ptr, size_t size)
         // Mark next block of size rem_size as empty and add to seg_list
         PUT(HDRP(NEXT_BLKP(ptr)), PACK(rem_size, 0));
         PUT(FTRP(NEXT_BLKP(ptr)), PACK(rem_size, 0));
+	// coalesce before adding?
         seg_list_add((list_block*)NEXT_BLKP(ptr));
         return ptr;
     }else{ // size > ptr
-
+ 	DBG_ASSERT(GET(HDRP(ptr)) == GET(FTRP(ptr)));
         int i_size;
         int i = 0;
         void *iptr = ptr;
         for (i_size = 0; i_size < asize; iptr = NEXT_BLKP(iptr)) {
-            if (GET_ALLOC(HDRP(iptr)) && iptr != ptr)   {
+
+            if ((GET_ALLOC(HDRP(iptr)) && i != 0) || iptr > epilogue)   {
                 DBG_PRINT("CONTIGUOUS ALLOCATION FAILED!!\n");
                 // failed to find contigous memory block, allocate new block using malloc
                 void* newptr = mm_malloc(asize);
@@ -485,13 +507,14 @@ void *mm_realloc(void *ptr, size_t size)
                 mm_free(ptr);
                 return newptr;
             }
-
-            DBG_PRINT("%dth block @ 0x%p, size: %d\n", i, iptr, GET_SIZE(HDRP(iptr)));
+	    if(i==3)while(1);
+            DBG_PRINT("%dth block @ %p, size: %d\n", i, iptr, GET_SIZE(HDRP(iptr)));
+	    DBG_ASSERT(GET(HDRP(iptr)) == GET(FTRP(iptr)));
             i_size += GET_SIZE(HDRP(iptr));
             i++;
         }
         // success, mark all i blocks as allocated, remove from free lists, return same ptr
-        DBG_PRINT("CONTIGUOUS BlOCKS FOUND! i_size:%d, asize:%d, orig_sz:%d, num_blocks:%d\n", i_size, asize, orig_sz, i-1);
+        DBG_PRINT("CONTIGUOUS BlOCKS SUCCESS! original block at:%p, i_size:%d, asize:%d, orig_sz:%d, num_blocks:%d\n", ptr, i_size, asize, orig_sz, i-1);
         int ii;
         for (iptr = NEXT_BLKP(ptr), ii=1; ii < i; ii++, iptr = NEXT_BLKP(iptr)){
             DBG_PRINT("removing %dth block @ 0x%p, size: %d\n", ii, iptr, GET_SIZE(HDRP(iptr)));
@@ -501,6 +524,7 @@ void *mm_realloc(void *ptr, size_t size)
         DBG_ASSERT(i_size >= asize);
         PUT(HDRP(ptr), PACK(i_size, 1));
         PUT(FTRP(ptr), PACK(i_size, 1));
+	DBG_PRINT("allocated block at %p, size from header = %d, size from footer = %d\n", ptr, GET_SIZE(HDRP(ptr)), GET_SIZE(FTRP(ptr)));
         return ptr;
     }
     /*
