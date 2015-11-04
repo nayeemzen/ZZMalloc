@@ -77,6 +77,7 @@ typedef struct list_block {
 #define MIN_BLOCK_SIZE 2 * DSIZE
 
 // allow configuring debug via commandline -DDBG
+
 #ifndef DBG
 #define DBG 0
 #else
@@ -114,8 +115,12 @@ int calc_size_class(size_t sz) {
     return MIN(i, NUM_LISTS - 1);
 }
 
+
+#define SEG_LIST_PRINT(...) 
+
+
+
 void seg_list_print(void) {
-#ifdef DBG
     int i;
     for (i = 0; i < NUM_LISTS; i++) {
         DBG_PRINT("printing seg_lists[%d]\n", i);
@@ -126,8 +131,9 @@ void seg_list_print(void) {
             ls = ls->next;
         } while (ls != seg_lists[i]); 
     }
-#endif
+
 }
+
 
 void seg_list_add(list_block* bp) {
     int bsize = GET_SIZE(HDRP(bp));
@@ -139,21 +145,29 @@ void seg_list_add(list_block* bp) {
     if (!list) {
         DBG_PRINT("list@%d is empty!!\n", sz_cls);
         seg_lists[sz_cls] = bp;
-        seg_lists[sz_cls]->next = bp;
-        seg_lists[sz_cls]->prev = bp;
-        seg_list_print();
+        bp->next = bp;
+        bp->prev = bp;
+        SEG_LIST_PRINT();
         return;
     }
     
+       /* current = seg_lists[sz_cls];
+    do{
+        if(GET_SIZE(current) >= bsize) {
+            break;
+        }
+        current=current->next;
+    }while(current != seg_lists[sz_cls]);*/
+
     // seg list is not empty, insert bp at head
     bp->next = seg_lists[sz_cls];
     bp->prev = seg_lists[sz_cls]->prev;
     bp->prev->next = bp;
     bp->next->prev = bp;
 
-#ifdef DBG
-    seg_list_print();
-#endif
+
+    SEG_LIST_PRINT();
+
 }
 
 void seg_list_remove(list_block* blk) {
