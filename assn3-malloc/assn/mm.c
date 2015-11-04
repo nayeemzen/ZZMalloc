@@ -79,6 +79,8 @@ typedef struct list_block {
 // allow configuring debug via commandline -DDBG
 #ifndef DBG
 #define DBG 0
+#else
+#define DBG 1
 #endif
 
 #define DBG_PRINT(...) DBG ? printf(__VA_ARGS__): (void)NULL;
