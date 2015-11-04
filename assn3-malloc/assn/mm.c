@@ -98,6 +98,9 @@ void seg_list_init(void) {
 }
 
 // TODO(Zen): Improve from O(n) -> O(1)
+// I don't think that can be done, best you can do is O(logn)
+// by doing a binary search to find the appropriate list
+// But it's actually already O(1) because NUM LISTS is a constant
 int calc_size_class(size_t sz) {
     DBG_ASSERT(sz >= MIN_BLOCK_SIZE);
     DBG_ASSERT(sz % 16 == 0);
