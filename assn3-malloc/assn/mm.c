@@ -84,8 +84,10 @@ typedef struct list_block {
 #define DBG 1
 #endif
 
+// I couldn't get this to work for SEG_LIST_PRINT
 #define DBG_PRINT(...) DBG ? printf(__VA_ARGS__): (void)NULL;
 #define DBG_ASSERT(expr) DBG ? assert(expr): (void)NULL;
+#define SEG_LIST_PRINT(...) 
 
 // Global segregated lists of different size classes
 list_block *seg_lists[NUM_LISTS];
@@ -116,7 +118,7 @@ int calc_size_class(size_t sz) {
 }
 
 
-#define SEG_LIST_PRINT(...) 
+
 
 
 
