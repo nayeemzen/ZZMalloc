@@ -87,7 +87,7 @@ typedef struct list_block {
 // I couldn't get this to work for SEG_LIST_PRINT
 #define DBG_PRINT(...) DBG ? printf(__VA_ARGS__): (void)NULL;
 #define DBG_ASSERT(expr) DBG ? assert(expr): (void)NULL;
-#define SEG_LIST_PRINT(...) 
+#define SEG_LIST_PRINT(...) DBG ? seg_list_print(__VA_ARGS__): (void)NULL;
 
 // Global segregated lists of different size classes
 list_block *seg_lists[NUM_LISTS];
@@ -149,7 +149,7 @@ void seg_list_add(list_block* bp) {
         seg_lists[sz_cls] = bp;
         bp->next = bp;
         bp->prev = bp;
-        SEG_LIST_PRINT();
+        // SEG_LIST_PRINT();
         return;
     }
     
@@ -168,7 +168,7 @@ void seg_list_add(list_block* bp) {
     bp->next->prev = bp;
 
 
-    SEG_LIST_PRINT();
+    // SEG_LIST_PRINT();
 
 }
 
@@ -354,7 +354,7 @@ void place(void* bp, size_t asize)
   
   size_t rem_size = bsize - asize;
   if (rem_size < MIN_BLOCK_SIZE) {
-      DBG_PRINT("Could not split\n");
+      DBG_PRINT("Could not split, required_size:%d, block_size:%d, remaining_size:%d\n", asize, bsize, rem_size);
       PUT(HDRP(bp), PACK(bsize, 1));
       PUT(FTRP(bp), PACK(bsize, 1));
       return;
@@ -434,7 +434,9 @@ void *mm_malloc(size_t size)
  * Implemented simply in terms of mm_malloc and mm_free
  *********************************************************/
 void *mm_realloc(void *ptr, size_t size)
-{
+{   
+    int orig_sz = GET_SIZE(HDRP(ptr));
+    DBG_PRINT("realloc request for 0x%p orig_sz: %d, request_size: %d\n", ptr, orig_sz, size);
     /* If size == 0 then this is just free, and we return NULL. */
     if(size == 0){
       mm_free(ptr);
@@ -444,21 +446,74 @@ void *mm_realloc(void *ptr, size_t size)
     if (ptr == NULL)
       return (mm_malloc(size));
 
-    void *oldptr = ptr;
-    void *newptr;
-    size_t copySize;
+    size_t asize; /* adjusted block size */
+    /* Adjust block size to include overhead and alignment reqs. */
+    if (size <= DSIZE)
+        asize = 2 * DSIZE;
+    else
+        asize = DSIZE * ((size + (DSIZE) + (DSIZE-1))/ DSIZE);
 
+
+    if (asize == orig_sz){
+        return ptr;
+    }else if (asize < orig_sz){
+        int rem_size = orig_sz - size;
+        if(rem_size < (2 * DSIZE)){
+            //couldn't split
+            return ptr;
+        }
+        // Can successfully split, allocate block of asize
+        PUT(HDRP(ptr), PACK(asize, 1));
+        PUT(FTRP(ptr), PACK(asize, 1)); 
+          
+        // Mark next block of size rem_size as empty and add to seg_list
+        PUT(HDRP(NEXT_BLKP(ptr)), PACK(rem_size, 0));
+        PUT(FTRP(NEXT_BLKP(ptr)), PACK(rem_size, 0));
+        seg_list_add((list_block*)NEXT_BLKP(ptr));
+        return ptr;
+    }else{ // size > ptr
+
+        int i_size;
+        int i = 0;
+        void *iptr = ptr;
+        for (i_size = 0; i_size < asize; iptr = NEXT_BLKP(iptr)) {
+            if (GET_ALLOC(HDRP(iptr)) && iptr != ptr)   {
+                DBG_PRINT("CONTIGUOUS ALLOCATION FAILED!!\n");
+                // failed to find contigous memory block, allocate new block using malloc
+                void* newptr = mm_malloc(asize);
+                memcpy(newptr, ptr, orig_sz);
+                mm_free(ptr);
+                return newptr;
+            }
+
+            DBG_PRINT("%dth block @ 0x%p, size: %d\n", i, iptr, GET_SIZE(HDRP(iptr)));
+            i_size += GET_SIZE(HDRP(iptr));
+            i++;
+        }
+        // success, mark all i blocks as allocated, remove from free lists, return same ptr
+        DBG_PRINT("CONTIGUOUS BlOCKS FOUND! i_size:%d, asize:%d, orig_sz:%d, num_blocks:%d\n", i_size, asize, orig_sz, i-1);
+        int ii;
+        for (iptr = NEXT_BLKP(ptr), ii=1; ii < i; ii++, iptr = NEXT_BLKP(iptr)){
+            DBG_PRINT("removing %dth block @ 0x%p, size: %d\n", ii, iptr, GET_SIZE(HDRP(iptr)));
+            seg_list_remove((list_block*)iptr);
+        }
+
+        DBG_ASSERT(i_size >= asize);
+        PUT(HDRP(ptr), PACK(i_size, 1));
+        PUT(FTRP(ptr), PACK(i_size, 1));
+        return ptr;
+    }
+    /*
     newptr = mm_malloc(size);
     if (newptr == NULL)
       return NULL;
 
-    /* Copy the old data. */
+    // Copy the old data. 
     copySize = GET_SIZE(HDRP(oldptr));
     if (size < copySize)
       copySize = size;
     memcpy(newptr, oldptr, copySize);
-    mm_free(oldptr);
-    return newptr;
+    mm_free(oldptr);*/
 }
 
 /**********************************************************
