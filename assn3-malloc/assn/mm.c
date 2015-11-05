@@ -88,6 +88,7 @@ typedef struct list_block {
 #define DBG_PRINT(...) DBG ? printf(__VA_ARGS__): (void)NULL;
 #define DBG_ASSERT(expr) DBG ? assert(expr): (void)NULL;
 #define SEG_LIST_PRINT(...) DBG ? seg_list_print(__VA_ARGS__): (void)NULL;
+#define DBG_PRINT_HEAP(...) DBG ? print_heap(__VA_ARGS__): (void)NULL;
 
 // Global segregated lists of different size classes
 list_block *seg_lists[NUM_LISTS];
@@ -145,6 +146,7 @@ void seg_list_add(list_block* bp) {
     int sz_cls = calc_size_class(bsize);
     list_block *list = seg_lists[sz_cls];
 
+
     DBG_ASSERT(GET(HDRP(bp)) == GET(FTRP(bp)));
     DBG_ASSERT(bsize >= 2*DSIZE);
 
@@ -181,6 +183,8 @@ void seg_list_remove(list_block* blk) {
     if (!blk) return;
     size_t sz = GET_SIZE(HDRP(blk));
 
+    DBG_ASSERT(FTRP(blk) > HDRP(blk));
+    DBG_PRINT("blk at %p, header = %p, footer = %p\n", blk,*((unsigned long*) HDRP(blk)),*((unsigned long*)FTRP(blk)));
     DBG_PRINT("size from header = %d,size from footer = %d\n", GET_SIZE(HDRP(blk)), GET_SIZE(FTRP(blk)));
     DBG_ASSERT(GET(HDRP(blk)) == GET(FTRP(blk)));
 
@@ -229,11 +233,13 @@ void * seg_list_find_fit(size_t sz) {
             seg_list_remove(blk);
             PUT(HDRP(blk), PACK(sz, 1));
             PUT(FTRP(blk), PACK(sz, 1)); 
+            DBG_ASSERT(FTRP(blk) > HDRP(blk));
 
             // Mark next block of size rem_size as empty and add to seg_list
             PUT(HDRP(NEXT_BLKP(blk)), PACK(rem_size, 0));
             PUT(FTRP(NEXT_BLKP(blk)), PACK(rem_size, 0));
-
+            if(NEXT_BLKP(blk)!= epilogue)
+            DBG_ASSERT(FTRP(NEXT_BLKP(blk)) > HDRP(NEXT_BLKP(blk)));
 	    //coalesce before adding?
             seg_list_add((list_block*)NEXT_BLKP(blk));
             
@@ -244,6 +250,8 @@ void * seg_list_find_fit(size_t sz) {
     return NULL;
 }
 
+void* start_of_heap = NULL;
+void* prologue = NULL;
 /**********************************************************
  * mm_init
  * Initialize the heap, including "allocation" of the
@@ -253,9 +261,15 @@ void * seg_list_find_fit(size_t sz) {
  {
    if ((heap_listp = mem_sbrk(4*WSIZE)) == (void *)-1)
          return -1;
+
+     start_of_heap = heap_listp;
+
      PUT(heap_listp, 0);                         // alignment padding
      PUT(heap_listp + (1 * WSIZE), PACK(DSIZE, 1));   // prologue header
      PUT(heap_listp + (2 * WSIZE), PACK(DSIZE, 1));   // prologue footer
+
+     prologue = (void*) (heap_listp + (2 * WSIZE));
+
      PUT(heap_listp + (3 * WSIZE), PACK(0, 1));    // epilogue header
      heap_listp += DSIZE;
      
@@ -276,6 +290,13 @@ void *coalesce(void *bp)
     size_t prev_alloc = GET_ALLOC(FTRP(PREV_BLKP(bp)));
     size_t next_alloc = GET_ALLOC(HDRP(NEXT_BLKP(bp)));
     size_t size = GET_SIZE(HDRP(bp));
+    DBG_ASSERT(FTRP(bp) > HDRP(bp));
+    DBG_ASSERT(FTRP(PREV_BLKP(bp)) > HDRP(PREV_BLKP(bp)));
+
+    if(NEXT_BLKP(bp) != epilogue){
+        DBG_PRINT("blk at %p\n",NEXT_BLKP(bp));
+        DBG_ASSERT(FTRP(NEXT_BLKP(bp)) > HDRP(NEXT_BLKP(bp)));
+    }
 
     if (prev_alloc && next_alloc) {       /* Case 1 */
         return bp;
@@ -286,6 +307,8 @@ void *coalesce(void *bp)
         size += GET_SIZE(HDRP(NEXT_BLKP(bp)));
         PUT(HDRP(bp), PACK(size, 0));
         PUT(FTRP(bp), PACK(size, 0));
+        DBG_ASSERT(FTRP(bp) > HDRP(bp));
+        DBG_ASSERT(bp > start_of_heap);
         return (bp);
     }
 
@@ -294,6 +317,11 @@ void *coalesce(void *bp)
         size += GET_SIZE(HDRP(PREV_BLKP(bp)));
         PUT(FTRP(bp), PACK(size, 0));
         PUT(HDRP(PREV_BLKP(bp)), PACK(size, 0));
+
+        DBG_ASSERT(FTRP(bp) > HDRP(bp));
+        DBG_ASSERT(FTRP(PREV_BLKP(bp)) > HDRP(PREV_BLKP(bp)));
+
+        DBG_ASSERT((void*)PREV_BLKP(bp) > start_of_heap);
         return (PREV_BLKP(bp));
     }
 
@@ -304,6 +332,14 @@ void *coalesce(void *bp)
             GET_SIZE(FTRP(NEXT_BLKP(bp)))  ;
         PUT(HDRP(PREV_BLKP(bp)), PACK(size,0));
         PUT(FTRP(NEXT_BLKP(bp)), PACK(size,0));
+
+        if(NEXT_BLKP(bp) != epilogue)
+        DBG_ASSERT(FTRP(NEXT_BLKP(bp)) > HDRP(NEXT_BLKP(bp)));
+
+        DBG_ASSERT(FTRP(PREV_BLKP(bp)) > HDRP(PREV_BLKP(bp)));
+        DBG_ASSERT(FTRP(bp) > HDRP(bp));
+
+        DBG_ASSERT((void*)PREV_BLKP(bp) > start_of_heap);
         return (PREV_BLKP(bp));
     }
 }
@@ -330,6 +366,7 @@ void *extend_heap(size_t words)
     PUT(HDRP(NEXT_BLKP(bp)), PACK(0, 1));        // new epilogue header
 
     epilogue = NEXT_BLKP(bp);
+    DBG_ASSERT(FTRP(bp) > HDRP(bp));
 
     /* Coalesce if the previous block was free */
     return coalesce(bp);
@@ -371,6 +408,7 @@ void place(void* bp, size_t asize)
       DBG_PRINT("Could not split, required_size:%d, block_size:%d, remaining_size:%d\n", asize, bsize, rem_size);
       PUT(HDRP(bp), PACK(bsize, 1));
       PUT(FTRP(bp), PACK(bsize, 1));
+      DBG_ASSERT(FTRP(bp) > HDRP(bp));
       return;
   }
   
@@ -378,13 +416,27 @@ void place(void* bp, size_t asize)
   PUT(HDRP(bp), PACK(asize, 1));
   PUT(FTRP(bp), PACK(asize, 1)); 
   DBG_PRINT("allocated block at %p, size from header = %d, size from foote = %d\n", bp, GET_SIZE(HDRP(bp)), GET_SIZE(FTRP(bp)));
-
+  DBG_ASSERT(FTRP(bp) > HDRP(bp));
   
   // Mark next block of size rem_size as empty and add to seg_list
   PUT(HDRP(NEXT_BLKP(bp)), PACK(rem_size, 0));
   PUT(FTRP(NEXT_BLKP(bp)), PACK(rem_size, 0));
+  if (NEXT_BLKP(bp) != epilogue)
+  DBG_ASSERT(FTRP(NEXT_BLKP(bp)) > HDRP(NEXT_BLKP(bp)));
   //coalesce?
   seg_list_add((list_block*)NEXT_BLKP(bp));
+}
+
+void print_heap(){
+    void* it = prologue;
+    for (it = prologue; it != epilogue; it = NEXT_BLKP(it)){
+        printf("blk at %p, size=%x, alloc=%d\n", it, GET_SIZE(HDRP(it)), GET_ALLOC(HDRP(it)));
+        if(GET_SIZE(HDRP(it)) == 0){
+            printf("manual break point...\n");
+        }
+    }
+    printf("epilogue at %p, size=%x, alloc=%d\n", it, GET_SIZE(HDRP(it)), GET_ALLOC(HDRP(it)));
+   // while(1);
 }
 
 /**********************************************************
@@ -397,12 +449,17 @@ void mm_free(void *bp)
       return;
     }
     
-    DBG_PRINT("Free request for 0x%p size of %lu\n", bp, GET_SIZE(HDRP(bp)));
+    DBG_ASSERT(bp > start_of_heap);
+    DBG_PRINT("Free request for 0x%p size of %x\n", bp, GET_SIZE(HDRP(bp)));
     
+    DBG_ASSERT(FTRP(bp) > HDRP(bp));
     size_t size = GET_SIZE(HDRP(bp));
     PUT(HDRP(bp), PACK(size,0));
     PUT(FTRP(bp), PACK(size,0));
+    DBG_ASSERT(FTRP(bp) > HDRP(bp));
+
     seg_list_add(coalesce(bp));
+    DBG_PRINT_HEAP();
 }
 
 
@@ -420,20 +477,26 @@ void *mm_malloc(size_t size)
     size_t extendsize; /* amount to extend heap if no fit */
     char * bp;
     
+
     /* Ignore spurious requests */
     if (size == 0)
         return NULL;
+
 
     /* Adjust block size to include overhead and alignment reqs. */
     if (size <= DSIZE)
         asize = 2 * DSIZE;
     else
         asize = DSIZE * ((size + (DSIZE) + (DSIZE-1))/ DSIZE);
-    
+
+    //if(epilogue!=NULL)
+    //DBG_PRINT_HEAP();    
+
     DBG_PRINT("Malloc request size: %lu\n", asize);
     /* Search the free list for a fit */
     if ((bp = seg_list_find_fit(asize)) != NULL) {
         place(bp, asize);
+        DBG_ASSERT((void*)bp > start_of_heap);
         return bp;
     }
 
@@ -442,6 +505,7 @@ void *mm_malloc(size_t size)
     if ((bp = extend_heap(extendsize/WSIZE)) == NULL)
         return NULL;
     place(bp, asize);
+    DBG_ASSERT((void*)bp > start_of_heap);
     return bp;
 
 }
@@ -455,7 +519,10 @@ void *mm_realloc(void *ptr, size_t size)
     int orig_sz = GET_SIZE(HDRP(ptr));
     DBG_ASSERT(GET(HDRP(ptr)) == GET(FTRP(ptr)));
 
-    DBG_PRINT("realloc request for 0x%p orig_sz: %d, request_size: %d\n", ptr, orig_sz, size);
+
+    DBG_PRINT_HEAP();
+
+    DBG_PRINT("realloc request for 0x%p orig_sz: %x, request_size: %x\n", ptr, orig_sz, size);
     /* If size == 0 then this is just free, and we return NULL. */
     if(size == 0){
       mm_free(ptr);
@@ -464,6 +531,8 @@ void *mm_realloc(void *ptr, size_t size)
     /* If oldptr is NULL, then this is just malloc. */
     if (ptr == NULL)
       return (mm_malloc(size));
+
+    DBG_ASSERT(FTRP(ptr) > HDRP(ptr));
 
     size_t asize; /* adjusted block size */
     /* Adjust block size to include overhead and alignment reqs. */
@@ -475,9 +544,10 @@ void *mm_realloc(void *ptr, size_t size)
 
     DBG_PRINT("heap epilogue now at:%p\n", epilogue);
     if (asize == orig_sz){
+        DBG_ASSERT(FTRP(ptr) > HDRP(ptr));
         return ptr;
     }else if (asize < orig_sz){
-        int rem_size = orig_sz - size;
+        int rem_size = orig_sz - asize;
         if(rem_size < (2 * DSIZE)){
             //couldn't split
             return ptr;
@@ -485,10 +555,12 @@ void *mm_realloc(void *ptr, size_t size)
         // Can successfully split, allocate block of asize
         PUT(HDRP(ptr), PACK(asize, 1));
         PUT(FTRP(ptr), PACK(asize, 1)); 
-          
+        DBG_ASSERT(FTRP(ptr) > HDRP(ptr));
         // Mark next block of size rem_size as empty and add to seg_list
         PUT(HDRP(NEXT_BLKP(ptr)), PACK(rem_size, 0));
         PUT(FTRP(NEXT_BLKP(ptr)), PACK(rem_size, 0));
+        if(NEXT_BLKP(ptr)!= epilogue)
+        DBG_ASSERT(FTRP(NEXT_BLKP(ptr)) > HDRP(NEXT_BLKP(ptr)));
 	// coalesce before adding?
         seg_list_add((list_block*)NEXT_BLKP(ptr));
         return ptr;
@@ -498,33 +570,39 @@ void *mm_realloc(void *ptr, size_t size)
         int i = 0;
         void *iptr = ptr;
         for (i_size = 0; i_size < asize; iptr = NEXT_BLKP(iptr)) {
-
             if ((GET_ALLOC(HDRP(iptr)) && i != 0) || iptr > epilogue)   {
                 DBG_PRINT("CONTIGUOUS ALLOCATION FAILED!!\n");
                 // failed to find contigous memory block, allocate new block using malloc
                 void* newptr = mm_malloc(asize);
                 memcpy(newptr, ptr, orig_sz);
+
+                DBG_ASSERT(FTRP(ptr) > HDRP(ptr));
                 mm_free(ptr);
+                DBG_ASSERT(FTRP(newptr) > HDRP(newptr));
+                DBG_PRINT_HEAP();
                 return newptr;
             }
+        DBG_ASSERT(FTRP(iptr) > HDRP(iptr));
 	    if(i==3)while(1);
-            DBG_PRINT("%dth block @ %p, size: %d\n", i, iptr, GET_SIZE(HDRP(iptr)));
+            DBG_PRINT("%dth block @ %p, size: %x\n", i, iptr, GET_SIZE(HDRP(iptr)));
 	    DBG_ASSERT(GET(HDRP(iptr)) == GET(FTRP(iptr)));
             i_size += GET_SIZE(HDRP(iptr));
             i++;
         }
         // success, mark all i blocks as allocated, remove from free lists, return same ptr
-        DBG_PRINT("CONTIGUOUS BlOCKS SUCCESS! original block at:%p, i_size:%d, asize:%d, orig_sz:%d, num_blocks:%d\n", ptr, i_size, asize, orig_sz, i-1);
+        DBG_PRINT("CONTIGUOUS BlOCKS SUCCESS! original block at:%p, i_size:%x, asize:%x, orig_sz:%x, num_blocks:%d\n", ptr, i_size, asize, orig_sz, i-1);
         int ii;
         for (iptr = NEXT_BLKP(ptr), ii=1; ii < i; ii++, iptr = NEXT_BLKP(iptr)){
-            DBG_PRINT("removing %dth block @ 0x%p, size: %d\n", ii, iptr, GET_SIZE(HDRP(iptr)));
+            DBG_PRINT("removing %dth block @ 0x%p, size: %x\n", ii, iptr, GET_SIZE(HDRP(iptr)));
             seg_list_remove((list_block*)iptr);
         }
 
         DBG_ASSERT(i_size >= asize);
         PUT(HDRP(ptr), PACK(i_size, 1));
         PUT(FTRP(ptr), PACK(i_size, 1));
-	DBG_PRINT("allocated block at %p, size from header = %d, size from footer = %d\n", ptr, GET_SIZE(HDRP(ptr)), GET_SIZE(FTRP(ptr)));
+        DBG_ASSERT(FTRP(ptr) > HDRP(ptr));
+    	DBG_PRINT("allocated block at %p, size from header = %x, size from footer = %x\n", ptr, GET_SIZE(HDRP(ptr)), GET_SIZE(FTRP(ptr)));
+        DBG_PRINT_HEAP();
         return ptr;
     }
     /*
@@ -540,11 +618,14 @@ void *mm_realloc(void *ptr, size_t size)
     mm_free(oldptr);*/
 }
 
+
+
 /**********************************************************
  * mm_check
  * Check the consistency of the memory heap
  * Return nonzero if the heap is consistant.
  *********************************************************/
 int mm_check(void){
+
   return 1;
 }
