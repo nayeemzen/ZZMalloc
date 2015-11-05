@@ -41,7 +41,16 @@ team_t team = {
 *************************************************************************/
 #define WSIZE       sizeof(void *)            /* word size (bytes) */
 #define DSIZE       (2 * WSIZE)            /* doubleword size (bytes) */
-#define CHUNKSIZE   (1<<7)      /* initial heap size (bytes) */
+
+// allow configuration of those via command line
+#ifndef CHSIZE 
+#define CHSIZE 8
+#endif
+#define CHUNKSIZE   (1<<CHSIZE)      /* initial heap size (bytes) */
+
+#ifndef NUM_LISTS
+#define NUM_LISTS 11
+#endif
 
 #define MAX(x,y) ((x) > (y)?(x) :(y))
 #define MIN(x,y) ((x) < (y)?(x): (y))
@@ -73,18 +82,15 @@ typedef struct list_block {
 } list_block;
 
 /* Implementation globals and macros */
-#define NUM_LISTS 8
 #define MIN_BLOCK_SIZE 2 * DSIZE
 
 // allow configuring debug via commandline -DDBG
-
 #ifndef DBG
 #define DBG 0
 #else
 #define DBG 1
 #endif
 
-// I couldn't get this to work for SEG_LIST_PRINT
 #define DBG_PRINT(...) DBG ? printf(__VA_ARGS__): (void)NULL;
 #define DBG_ASSERT(expr) DBG ? assert(expr): (void)NULL;
 #define SEG_LIST_PRINT(...) DBG ? seg_list_print(__VA_ARGS__): (void)NULL;
@@ -93,7 +99,11 @@ typedef struct list_block {
 // Global segregated lists of different size classes
 list_block *seg_lists[NUM_LISTS];
 
+/* used for debugging */
 void* epilogue = NULL;
+void* start_of_heap = NULL;
+
+void* prologue = NULL;
 
 /* Implementation functions */
 void seg_list_init(void) {
@@ -120,11 +130,7 @@ int calc_size_class(size_t sz) {
     return MIN(i, NUM_LISTS - 1);
 }
 
-
-
-
-
-
+/* print every block in every free list */
 void seg_list_print(void) {
     int i;
     for (i = 0; i < NUM_LISTS; i++) {
@@ -156,27 +162,16 @@ void seg_list_add(list_block* bp) {
         seg_lists[sz_cls] = bp;
         bp->next = bp;
         bp->prev = bp;
-        // SEG_LIST_PRINT();
+        SEG_LIST_PRINT();
         return;
     }
-    
-       /* current = seg_lists[sz_cls];
-    do{
-        if(GET_SIZE(current) >= bsize) {
-            break;
-        }
-        current=current->next;
-    }while(current != seg_lists[sz_cls]);*/
 
     // seg list is not empty, insert bp at head
     bp->next = seg_lists[sz_cls];
     bp->prev = seg_lists[sz_cls]->prev;
     bp->prev->next = bp;
     bp->next->prev = bp;
-
-
-    // SEG_LIST_PRINT();
-
+    SEG_LIST_PRINT();
 }
 
 void seg_list_remove(list_block* blk) {
@@ -231,27 +226,23 @@ void * seg_list_find_fit(size_t sz) {
             // Split block and put excess fragment into appropriate size class
             // Remove block from current size_class
             seg_list_remove(blk);
-            PUT(HDRP(blk), PACK(sz, 1));
-            PUT(FTRP(blk), PACK(sz, 1)); 
+            void* usrptr = (void*)blk + rem_size;
+            PUT(HDRP(usrptr), PACK(sz, 1));
+            PUT(FTRP(usrptr), PACK(sz, 1)); 
             DBG_ASSERT(FTRP(blk) > HDRP(blk));
 
             // Mark next block of size rem_size as empty and add to seg_list
-            PUT(HDRP(NEXT_BLKP(blk)), PACK(rem_size, 0));
-            PUT(FTRP(NEXT_BLKP(blk)), PACK(rem_size, 0));
-            if(NEXT_BLKP(blk)!= epilogue)
-            DBG_ASSERT(FTRP(NEXT_BLKP(blk)) > HDRP(NEXT_BLKP(blk)));
-	    //coalesce before adding?
-            seg_list_add((list_block*)NEXT_BLKP(blk));
+            PUT(HDRP(blk), PACK(rem_size, 0));
+            PUT(FTRP(blk), PACK(rem_size, 0));
+            seg_list_add((list_block*)blk);
             
-            return blk;
+            return usrptr;
         } while (blk != seg_lists[sz_cls]); 
     }
 
     return NULL;
 }
 
-void* start_of_heap = NULL;
-void* prologue = NULL;
 /**********************************************************
  * mm_init
  * Initialize the heap, including "allocation" of the
@@ -259,6 +250,7 @@ void* prologue = NULL;
  **********************************************************/
  int mm_init(void)
  {
+     DBG_PRINT("using NUM_LISTS=%d, CHSIZE=%d\n",NUM_LISTS,CHSIZE);
    if ((heap_listp = mem_sbrk(4*WSIZE)) == (void *)-1)
          return -1;
 
@@ -436,7 +428,6 @@ void print_heap(){
         }
     }
     printf("epilogue at %p, size=%x, alloc=%d\n", it, GET_SIZE(HDRP(it)), GET_ALLOC(HDRP(it)));
-   // while(1);
 }
 
 /**********************************************************
@@ -488,10 +479,7 @@ void *mm_malloc(size_t size)
         asize = 2 * DSIZE;
     else
         asize = DSIZE * ((size + (DSIZE) + (DSIZE-1))/ DSIZE);
-
-    //if(epilogue!=NULL)
-    //DBG_PRINT_HEAP();    
-
+ 
     DBG_PRINT("Malloc request size: %lu\n", asize);
     /* Search the free list for a fit */
     if ((bp = seg_list_find_fit(asize)) != NULL) {
@@ -569,6 +557,7 @@ void *mm_realloc(void *ptr, size_t size)
         int i_size;
         int i = 0;
         void *iptr = ptr;
+        // loop will never go beyond 2 iterations
         for (i_size = 0; i_size < asize; iptr = NEXT_BLKP(iptr)) {
             if ((GET_ALLOC(HDRP(iptr)) && i != 0) || iptr > epilogue)   {
                 DBG_PRINT("CONTIGUOUS ALLOCATION FAILED!!\n");
@@ -583,8 +572,7 @@ void *mm_realloc(void *ptr, size_t size)
                 return newptr;
             }
         DBG_ASSERT(FTRP(iptr) > HDRP(iptr));
-	    if(i==3)while(1);
-            DBG_PRINT("%dth block @ %p, size: %x\n", i, iptr, GET_SIZE(HDRP(iptr)));
+        DBG_PRINT("%dth block @ %p, size: %x\n", i, iptr, GET_SIZE(HDRP(iptr)));
 	    DBG_ASSERT(GET(HDRP(iptr)) == GET(FTRP(iptr)));
             i_size += GET_SIZE(HDRP(iptr));
             i++;
@@ -592,11 +580,13 @@ void *mm_realloc(void *ptr, size_t size)
         // success, mark all i blocks as allocated, remove from free lists, return same ptr
         DBG_PRINT("CONTIGUOUS BlOCKS SUCCESS! original block at:%p, i_size:%x, asize:%x, orig_sz:%x, num_blocks:%d\n", ptr, i_size, asize, orig_sz, i-1);
         int ii;
+
         for (iptr = NEXT_BLKP(ptr), ii=1; ii < i; ii++, iptr = NEXT_BLKP(iptr)){
             DBG_PRINT("removing %dth block @ 0x%p, size: %x\n", ii, iptr, GET_SIZE(HDRP(iptr)));
             seg_list_remove((list_block*)iptr);
         }
 
+        //can add remainder to seg list but don't to optimize for realloc heavy lab
         DBG_ASSERT(i_size >= asize);
         PUT(HDRP(ptr), PACK(i_size, 1));
         PUT(FTRP(ptr), PACK(i_size, 1));
@@ -605,17 +595,7 @@ void *mm_realloc(void *ptr, size_t size)
         DBG_PRINT_HEAP();
         return ptr;
     }
-    /*
-    newptr = mm_malloc(size);
-    if (newptr == NULL)
-      return NULL;
 
-    // Copy the old data. 
-    copySize = GET_SIZE(HDRP(oldptr));
-    if (size < copySize)
-      copySize = size;
-    memcpy(newptr, oldptr, copySize);
-    mm_free(oldptr);*/
 }
 
 
