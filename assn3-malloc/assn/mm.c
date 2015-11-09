@@ -597,6 +597,8 @@ void *mm_realloc(void *ptr, size_t size)
  * Return nonzero if the heap is consistant.
  *********************************************************/
 int mm_check(void){
+    // can do alot more sanity checks here, but this one
+    // is the most solid that I can think of
     void* it = prologue;
     for (it = prologue; it != epilogue; it = NEXT_BLKP(it)){
         if(GET_SIZE(HDRP(it)) == 0){
