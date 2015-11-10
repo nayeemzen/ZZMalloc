@@ -1,12 +1,18 @@
 /*
- * This implementation replicates the implicit list implementation
- * provided in the textbook
+ * This implementation builds on the implicit list implementation
+ * provided in the textbook to build a segregated lists based
+ * allocator.
  * "Computer Systems - A Programmer's Perspective"
- * Blocks are never coalesced or reused.
+ * Blocks are coalesced and are reused.
  * Realloc is implemented directly using mm_malloc and mm_free.
- *
- * NOTE TO STUDENTS: Replace this header comment with your own header
- * comment that gives a high level description of your solution.
+ * By default this implementation uses 11 buckets of  different sizes
+ * of free blocks, although this is configurable via preprocessor macros
+ * We use a first fit policy when attempting to reuse a block 
+ * from the free lists.
+ * We always  insert free blocks to the free lists at the
+ * beginning of the appropriate free list
+ * structure of a free block is [Header][Previous][Next][empty/optional][Footer]
+ * structure of allocated block is [Header][Payload][Footer]
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -86,15 +92,18 @@ typedef struct list_block {
 
 // allow configuring debug via commandline -DDBG
 #ifndef DBG
-#define DBG 0
+#define DBG_PRINT(...)       (void)NULL;
+#define DBG_ASSERT(expr)     (void)NULL;
+#define SEG_LIST_PRINT(...)  (void)NULL;
+#define DBG_PRINT_HEAP(...)  (void)NULL;
 #else
-#define DBG 1
+#define DBG_PRINT(...)       printf(__VA_ARGS__);
+#define DBG_ASSERT(expr)     assert(expr);
+#define SEG_LIST_PRINT(...)  seg_list_print(__VA_ARGS__);
+#define DBG_PRINT_HEAP(...)  print_heap(__VA_ARGS__);
 #endif
 
-#define DBG_PRINT(...) DBG ? printf(__VA_ARGS__): (void)NULL;
-#define DBG_ASSERT(expr) DBG ? assert(expr): (void)NULL;
-#define SEG_LIST_PRINT(...) DBG ? seg_list_print(__VA_ARGS__): (void)NULL;
-#define DBG_PRINT_HEAP(...) DBG ? print_heap(__VA_ARGS__): (void)NULL;
+
 
 // Global segregated lists of different size classes
 list_block *seg_lists[NUM_LISTS];
@@ -114,9 +123,14 @@ void seg_list_init(void) {
 }
 
 // TODO(Zen): Improve from O(n) -> O(1)
-// I don't think that can be done, best you can do is O(logn)
+// I don't think that can be done, best we can do is O(logn)
 // by doing a binary search to find the appropriate list
 // But it's actually already O(1) because NUM LISTS is a constant
+/**********************************************************
+ * calc_size_class
+ * find the ideal free list to which a block of a given
+ * size should belong
+ **********************************************************/
 int calc_size_class(size_t sz) {
     DBG_ASSERT(sz >= MIN_BLOCK_SIZE);
     DBG_ASSERT(sz % 16 == 0);
@@ -130,7 +144,11 @@ int calc_size_class(size_t sz) {
     return MIN(i, NUM_LISTS - 1);
 }
 
-/* print every block in every free list */
+
+/**********************************************************
+ * seg_list_print
+ * print every block in every free list
+ **********************************************************/
 void seg_list_print(void) {
     int i;
     for (i = 0; i < NUM_LISTS; i++) {
@@ -145,7 +163,12 @@ void seg_list_print(void) {
 
 }
 
-
+/**********************************************************
+ * seg_list_add
+ * add a block to the free lists
+ * the block is always inserted at 
+ * the head of the appropriate list
+ **********************************************************/
 void seg_list_add(list_block* bp) {
     int bsize = GET_SIZE(HDRP(bp));
     // Get the size class for block of bsize;
@@ -174,6 +197,10 @@ void seg_list_add(list_block* bp) {
     SEG_LIST_PRINT();
 }
 
+/**********************************************************
+ * seg_list_remove
+ * remove a block from the free lists
+ **********************************************************/
 void seg_list_remove(list_block* blk) {
     if (!blk) return;
     size_t sz = GET_SIZE(HDRP(blk));
@@ -202,6 +229,14 @@ void seg_list_remove(list_block* blk) {
     seg_lists[sz_cls] = NULL;
 }
 
+/**********************************************************
+ * seg_list_find_split_place
+ * finds a block (on a first fit policy) big enough for sz
+ * splits it of possible
+ * places userload on higher part of the old block
+ * (rem size forms the lower block) 
+ * returns pointer to user load block
+ **********************************************************/
 void * seg_list_find_fit(size_t sz) {
     int sz_cls;
     for(sz_cls = calc_size_class(sz); sz_cls < NUM_LISTS; sz_cls++) {
@@ -251,7 +286,7 @@ void * seg_list_find_fit(size_t sz) {
  int mm_init(void)
  {
      DBG_PRINT("using NUM_LISTS=%d, CHSIZE=%d\n",NUM_LISTS,CHSIZE);
-   if ((heap_listp = mem_sbrk(4*WSIZE)) == (void *)-1)
+     if ((heap_listp = mem_sbrk(4*WSIZE)) == (void *)-1)
          return -1;
 
      start_of_heap = heap_listp;
@@ -413,19 +448,23 @@ void place(void* bp, size_t asize)
   // Mark next block of size rem_size as empty and add to seg_list
   PUT(HDRP(NEXT_BLKP(bp)), PACK(rem_size, 0));
   PUT(FTRP(NEXT_BLKP(bp)), PACK(rem_size, 0));
-  //coalesce?
+
   seg_list_add((list_block*)NEXT_BLKP(bp));
 }
 
+/**********************************************************
+ * print_heap
+ * Print the entire known heap.
+ **********************************************************/
 void print_heap(){
     void* it = prologue;
     for (it = prologue; it != epilogue; it = NEXT_BLKP(it)){
-        printf("blk at %p, size=%x, alloc=%d\n", it, GET_SIZE(HDRP(it)), GET_ALLOC(HDRP(it)));
+        printf("blk at %p, size=%lu, alloc=%d\n", it, GET_SIZE(HDRP(it)),(int) GET_ALLOC(HDRP(it)));
         if(GET_SIZE(HDRP(it)) == 0){
             printf("manual break point...\n");
         }
     }
-    printf("epilogue at %p, size=%x, alloc=%d\n", it, GET_SIZE(HDRP(it)), GET_ALLOC(HDRP(it)));
+    printf("epilogue at %p, size=%lu, alloc=%d\n", it, GET_SIZE(HDRP(it)),(int) GET_ALLOC(HDRP(it)));
 }
 
 /**********************************************************
@@ -449,7 +488,7 @@ void mm_free(void *bp)
     DBG_ASSERT(FTRP(bp) > HDRP(bp));
 
     seg_list_add(coalesce(bp));
-   // DBG_PRINT_HEAP();
+    DBG_PRINT_HEAP();
 }
 
 
@@ -507,7 +546,7 @@ void *mm_realloc(void *ptr, size_t size)
     DBG_ASSERT(GET(HDRP(ptr)) == GET(FTRP(ptr)));
 
 
-   // DBG_PRINT_HEAP();
+    DBG_PRINT_HEAP();
 
     DBG_PRINT("realloc request for 0x%p orig_sz: %x, request_size: %x\n", ptr, orig_sz, size);
     /* If size == 0 then this is just free, and we return NULL. */
@@ -558,7 +597,7 @@ void *mm_realloc(void *ptr, size_t size)
                 DBG_ASSERT(FTRP(ptr) > HDRP(ptr));
                 mm_free(ptr);
                 DBG_ASSERT(FTRP(newptr) > HDRP(newptr));
-          //      DBG_PRINT_HEAP();
+                DBG_PRINT_HEAP();
                 return newptr;
             }
         DBG_ASSERT(FTRP(iptr) > HDRP(iptr));
@@ -583,13 +622,31 @@ void *mm_realloc(void *ptr, size_t size)
         PUT(FTRP(ptr), PACK(i_size, 1));
         DBG_ASSERT(FTRP(ptr) > HDRP(ptr));
     	DBG_PRINT("allocated block at %p, size from header = %x, size from footer = %x\n", ptr, GET_SIZE(HDRP(ptr)), GET_SIZE(FTRP(ptr)));
-      //  DBG_PRINT_HEAP();
+        DBG_PRINT_HEAP();
         return ptr;
     }
 
 }
 
-
+/**********************************************************
+ * count_in_free_list
+ * Count the number of times a free block occurs in
+ * the free lists. 
+ *********************************************************/
+int count_in_free_list(void* p){
+    int i, count=0;
+    for (i = 0; i < NUM_LISTS; i++) {
+        list_block *ls = seg_lists[i];
+        if (!ls) continue;
+        do {
+            if (p==ls){
+                count++;
+            }
+            ls = ls->next;
+        } while (ls != seg_lists[i]); 
+    }
+    return count;
+}
 
 /**********************************************************
  * mm_check
@@ -597,19 +654,50 @@ void *mm_realloc(void *ptr, size_t size)
  * Return nonzero if the heap is consistant.
  *********************************************************/
 int mm_check(void){
-    // can do alot more sanity checks here, but this one
-    // is the most solid that I can think of
     void* it = prologue;
-    for (it = prologue; it != epilogue; it = NEXT_BLKP(it)){
+    for (it = prologue; it < epilogue; it = NEXT_BLKP(it)){
+        // no block is of size 0
         if(GET_SIZE(HDRP(it)) == 0){
             return 0;
         }
+        // headers and footers match
         if(GET(HDRP(it)) != GET(HDRP(it))){
             return 0;
         }
+        
+        if(!GET_ALLOC(HDRP(it))){
+            // is every free block in the free list (and occurs once only)?
+            if(count_in_free_list(it) != 1){
+                return 0;
+            }
+            // are there any free blocks that escaped coalescing?
+            if(!GET_ALLOC(HDRP(NEXT_BLKP(it)))){
+                return 0;
+            }
+        }
+
+        // is there any overlapping?
+        if(FTRP(it) > HDRP(NEXT_BLKP(it))){
+            return 0;
+        }
     }
-    if (it > epilogue){
+    // last block is always epilogue
+    if (it != epilogue){
         return 0;
+    }
+
+    // is every block in the free list marked as free?
+    int i;
+    for (i = 0; i < NUM_LISTS; i++) {
+        list_block *ls = seg_lists[i];
+        if (!ls) continue;
+        do {
+            if(GET_ALLOC(HDRP(ls))){
+                return 0;
+            }
+            ls = ls->next;
+        } while (ls != seg_lists[i]); 
     }
     return 1;
 }
+
