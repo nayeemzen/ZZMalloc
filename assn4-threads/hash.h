@@ -4,6 +4,14 @@
 
 #include <stdio.h>
 #include "list.h"
+// allow configuring debug via commandline -DDBG
+#ifndef DBG
+#define DBG_PRINT(...)       (void)NULL;
+#define DBG_ASSERT(expr)     (void)NULL;
+#else
+#define DBG_PRINT(...)       printf(__VA_ARGS__);
+#define DBG_ASSERT(expr)     assert(expr);
+#endif
 
 #define HASH_INDEX(_addr,_size_mask) (((_addr) >> 2) & (_size_mask))
 
@@ -20,7 +28,8 @@ template<class Ele, class Keytype> class hash {
  public:
   void setup(unsigned the_size_log=5);
   void insert(Ele *e);
-  Ele *lookup(Keytype the_key);
+                               //ugly but minimalistic and a classic
+  Ele *lookup(Keytype the_key, pthread_mutex_t**);
   void print(FILE *f=stdout);
   void reset();
   void cleanup();
@@ -45,12 +54,21 @@ hash<Ele,Keytype>::get_list(unsigned the_idx){
   return &entries[the_idx];
 }
 
+
 template<class Ele, class Keytype> 
-Ele *
-hash<Ele,Keytype>::lookup(Keytype the_key){
+Ele *                                      //ugly but minimalistic and a classic
+hash<Ele,Keytype>::lookup(Keytype the_key, pthread_mutex_t** list_lock_to_release){
   list<Ele,Keytype> *l;
 
   l = &entries[HASH_INDEX(the_key,my_size_mask)];
+
+  // lock the specific list here, unlock after increment
+  // ugly but yet minimalistic and a classic 
+  #ifdef LIST_LEVEL
+  pthread_mutex_lock(&(l->list_lock));
+  *list_lock_to_release = (&(l->list_lock));
+  #endif
+
   return l->lookup(the_key);
 }  
 
@@ -84,7 +102,10 @@ hash<Ele,Keytype>::cleanup(){
 template<class Ele, class Keytype> 
 void 
 hash<Ele,Keytype>::insert(Ele *e){
-  entries[HASH_INDEX(e->key(),my_size_mask)].push(e);
+  list<Ele,Keytype>* l; 
+  l = &entries[HASH_INDEX(e->key(),my_size_mask)];
+  l->push(e);
+
 }
 
 

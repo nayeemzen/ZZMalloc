@@ -4,6 +4,18 @@
 
 #include <stdio.h>
 
+#ifdef LIST_LEVEL
+#include <pthread.h>
+#endif
+// allow configuring debug via commandline -DDBG
+#ifndef DBG
+#define DBG_PRINT(...)       (void)NULL;
+#define DBG_ASSERT(expr)     (void)NULL;
+#else
+#define DBG_PRINT(...)       printf(__VA_ARGS__);
+#define DBG_ASSERT(expr)     assert(expr);
+#endif
+
 template<class Ele, class Keytype> class list;
 
 template<class Ele, class Keytype> class list {
@@ -11,7 +23,14 @@ template<class Ele, class Keytype> class list {
   Ele *my_head;
   unsigned long long my_num_ele;
  public:
+  #ifdef LIST_LEVEL
+  pthread_mutex_t list_lock = PTHREAD_MUTEX_INITIALIZER;
+  #endif
   list(){
+    #ifdef LIST_LEVEL
+    DBG_PRINT("initializing lock %p\n", &list_lock);
+    pthread_mutex_init (&list_lock,NULL);
+    #endif
     my_head = NULL;
     my_num_ele = 0;
   }
@@ -92,6 +111,10 @@ list<Ele,Keytype>::cleanup(){
   }
   my_head = NULL;
   my_num_ele = 0;
+
+  #ifdef LIST_LEVEL
+  pthread_mutex_destroy(&list_lock);
+  #endif
 }
 
 #endif

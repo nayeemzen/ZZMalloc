@@ -65,8 +65,6 @@ public:
   int end;
 };
 
-extern pthread_mutex_t* list_lock_to_release;
-
 void* func(void *ptr){
   tdata* data = (tdata*) ptr;
   int i,j,k;
@@ -84,24 +82,24 @@ void* func(void *ptr){
 
       // skip a number of samples
       for (k=0; k<samples_to_skip; k++){
-         rnum = rand_r((unsigned int*)&rnum);
+  rnum = rand_r((unsigned int*)&rnum);
       }
 
       // force the sample to be within the range of 0..RAND_NUM_UPPER_BOUND-1
       key = rnum % RAND_NUM_UPPER_BOUND;
-      pthread_mutex_t* list_lock_to_release = NULL;
+
+__transaction_atomic{
       // if this sample has not been counted before
-      if (!(s = h.lookup(key, &list_lock_to_release))){
-        // insert a new element for it into the hash table
-        s = new sample(key);
-        h.insert(s);
-        // increment the count for the sample
-        
+      if (!(s = h.lookup(key,NULL))){
+  
+  // insert a new element for it into the hash table
+  s = new sample(key);
+  h.insert(s);
       }
 
+      // increment the count for the sample
       s->count++;
-
-      pthread_mutex_unlock(list_lock_to_release);
+}
 
     }
   }

@@ -20,7 +20,8 @@
 #define DBG_ASSERT(expr)     assert(expr);
 #endif
 
-
+//part 1
+#define SINGLE_GLOBAL_VARI
 /* 
  * ECE454 Students: 
  * Please fill in the following team struct 
@@ -39,6 +40,10 @@ team_t team = {
 
 unsigned num_threads;
 unsigned samples_to_skip;
+
+#ifdef SINGLE_GLOBAL_VARI
+pthread_mutex_t single_global_lock = PTHREAD_MUTEX_INITIALIZER;
+#endif
 
 class sample;
 
@@ -65,8 +70,6 @@ public:
   int end;
 };
 
-extern pthread_mutex_t* list_lock_to_release;
-
 void* func(void *ptr){
   tdata* data = (tdata*) ptr;
   int i,j,k;
@@ -84,24 +87,29 @@ void* func(void *ptr){
 
       // skip a number of samples
       for (k=0; k<samples_to_skip; k++){
-         rnum = rand_r((unsigned int*)&rnum);
+  rnum = rand_r((unsigned int*)&rnum);
       }
 
       // force the sample to be within the range of 0..RAND_NUM_UPPER_BOUND-1
       key = rnum % RAND_NUM_UPPER_BOUND;
-      pthread_mutex_t* list_lock_to_release = NULL;
+
+      #ifdef SINGLE_GLOBAL_VARI
+      pthread_mutex_lock (&single_global_lock);
+      #endif 
       // if this sample has not been counted before
-      if (!(s = h.lookup(key, &list_lock_to_release))){
-        // insert a new element for it into the hash table
-        s = new sample(key);
-        h.insert(s);
-        // increment the count for the sample
-        
+      if (!(s = h.lookup(key,NULL))){
+  
+  // insert a new element for it into the hash table
+  s = new sample(key);
+  h.insert(s);
       }
 
+      // increment the count for the sample
       s->count++;
 
-      pthread_mutex_unlock(list_lock_to_release);
+      #ifdef SINGLE_GLOBAL_VARI
+      pthread_mutex_unlock (&single_global_lock);
+      #endif
 
     }
   }
@@ -114,6 +122,10 @@ int
 main (int argc, char* argv[]){
   int t;
   pthread_t threads[4] = { 0 };
+
+  #ifdef SINGLE_GLOBAL_VARI
+  pthread_mutex_init (&single_global_lock,NULL);
+  #endif
 
   // Print out team information
   printf( "Team Name: %s\n", team.team );
