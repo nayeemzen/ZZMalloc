@@ -23,12 +23,14 @@ template<class Ele, class Keytype> class hash {
   unsigned my_size;
   unsigned my_size_mask;
   list<Ele,Keytype> *entries;
-  list<Ele,Keytype> *get_list(unsigned the_idx);
 
  public:
   void setup(unsigned the_size_log=5);
   void insert(Ele *e);
-                               //ugly but minimalistic and a classic
+
+  list<Ele,Keytype> *get_list(unsigned the_idx);
+  unsigned size() { return my_size_log; };
+  //ugly but minimalistic and a classic
   Ele *lookup(Keytype the_key, pthread_mutex_t**);
   void print(FILE *f=stdout);
   void reset();
