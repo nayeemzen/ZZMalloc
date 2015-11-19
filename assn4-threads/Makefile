@@ -1,6 +1,6 @@
 
 CC = g++
-CFLAGS = -03 -lpthread -fgnu-tm
+CFLAGS = -g -lpthread -fgnu-tm
 CONFF =  
 all: randtrack 
 

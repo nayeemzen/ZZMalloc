@@ -41,7 +41,8 @@ template<class Ele, class Keytype> class list {
 
   Ele *head(){ return my_head; }
   Ele *lookup(Keytype the_key);
-
+    
+  void lookup_and_insert_if_absent(Keytype the_key);
   void push(Ele *e);
   Ele *pop();
   void print(FILE *f=stdout);
@@ -64,6 +65,63 @@ list<Ele,Keytype>::push(Ele *e){
   my_num_ele++;
 }
 
+#ifdef LIST_LOCK
+template<class Ele, class Keytype>
+void
+list<Ele,Keytype>::lookup_and_insert_if_absent(Keytype the_key) {
+      // lock list
+      pthread_mutex_lock(&list_lock);
+
+      Ele *e_tmp = my_head;
+      if (e_tmp == NULL) {
+          // create the new element
+          Ele *ele = new Ele(the_key);
+          ele->count++;
+          // assign new element to the head of the list
+          my_head = ele;
+          // increment number of elements in the list
+          my_num_ele++;
+          // unlock list
+          pthread_mutex_unlock(&list_lock);
+          return;
+      }
+      
+      pthread_mutex_unlock(&list_lock);
+      // Head is not null, traverse the list in search of the_key
+      while(e_tmp) {
+          // lock the current element
+          pthread_mutex_lock(&(e_tmp->elem_lock));
+          // found the key!
+          if (e_tmp->key() == the_key) {
+              e_tmp->count++;
+              // unlock the current element and return
+              pthread_mutex_unlock(&(e_tmp->elem_lock));
+              return;
+          }
+          // didn't find the key, end of the list
+          if (e_tmp->next == NULL) {
+              // create the new element
+              Ele *ele = new Ele(the_key);
+              ele->count++;
+              // assign ele to the tail of the list
+              e_tmp->next = ele;
+              // lock list
+              pthread_mutex_lock(&list_lock);
+              // increment number of elements in the list
+              my_num_ele++;
+              // unlock list
+              pthread_mutex_unlock(&list_lock);
+              // unlock the current element and return
+              pthread_mutex_unlock(&(e_tmp->elem_lock));
+              return;
+         }
+         // didn't find the element, not at the end of the list
+         // unlock the current element and iterate to the next element
+         pthread_mutex_unlock(&(e_tmp->elem_lock));
+         e_tmp = e_tmp->next;
+    }         
+}
+#endif
 template<class Ele, class Keytype> 
 Ele *
 list<Ele,Keytype>::pop(){

@@ -27,7 +27,7 @@ template<class Ele, class Keytype> class hash {
  public:
   void setup(unsigned the_size_log=5);
   void insert(Ele *e);
-
+  void lookup_and_insert_if_absent(Keytype thekey); 
   list<Ele,Keytype> *get_list(unsigned the_idx);
   unsigned size() { return my_size_log; };
   //ugly but minimalistic and a classic
@@ -110,5 +110,11 @@ hash<Ele,Keytype>::insert(Ele *e){
 
 }
 
+template<class Ele, class Keytype>
+void
+hash<Ele,Keytype>::lookup_and_insert_if_absent(Keytype thekey) {
+    auto l = &entries[HASH_INDEX(thekey, my_size_mask)];
+    l->lookup_and_insert_if_absent(thekey);
+}
 
 #endif

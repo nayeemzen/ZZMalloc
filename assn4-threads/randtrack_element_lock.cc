@@ -54,9 +54,8 @@ class sample {
       count = 0;
       pthread_mutex_init(&elem_lock, NULL);
   };
-  ~sample() {
-      pthread_mutex_destroy(&elem_lock);
-  };
+
+  ~sample() { pthread_mutex_destroy(&elem_lock); }
   unsigned key(){return my_key;}
   void print(FILE *f){printf("%d %d\n",my_key,count);}
 };
@@ -72,8 +71,6 @@ public:
   int begin;
   int end;
 };
-
-extern pthread_mutex_t* list_lock_to_release;
 
 void* func(void *ptr){
   tdata* data = (tdata*) ptr;
@@ -97,9 +94,9 @@ void* func(void *ptr){
 
       // force the sample to be within the range of 0..RAND_NUM_UPPER_BOUND-1
       key = rnum % RAND_NUM_UPPER_BOUND;
-      pthread_mutex_t* list_lock_to_release = NULL;
-      // if this sample has not been counted before
-      if (!(s = h.lookup(key, &list_lock_to_release))){
+      h.lookup_and_insert_if_absent(key); 
+      /* // if this sample has not been counted before
+      if (!(s = h.lookup(key, NULL))){
         // insert a new element for it into the hash table
         s = new sample(key);
         h.insert(s);
@@ -107,10 +104,7 @@ void* func(void *ptr){
       } 
      
       // lock the element and release the list level lock
-      pthread_mutex_lock(&(s->elem_lock));
-      pthread_mutex_unlock(list_lock_to_release);
-      s->count++;
-      pthread_mutex_unlock(&(s->elem_lock));
+      s->count++;*/
     }
   }
 
